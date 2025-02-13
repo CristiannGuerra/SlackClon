@@ -1,5 +1,5 @@
-import Home from "./Home/Home.jsx";
-import Register from "./Register/Register.jsx";
+import HomeScreen from "./HomeScreen/HomeScreen.jsx"
+import RegisterScreen from "./RegisterScreen/RegisterScreen.jsx"
 
 
-export {Home, Register}
+export {HomeScreen, RegisterScreen}

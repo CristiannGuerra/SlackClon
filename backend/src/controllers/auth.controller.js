@@ -47,13 +47,6 @@ const createNewUserController = async (req, res) => {
                 <a href="${ENVIRONMENT.URL_BACKEND}/api/auth/verify-email?verification_token=${verification_token}">Click Aqui</a>`
         })
 
-
-
-        // Log data for debugging
-        console.log(
-            `username: ${username},\nemail: ${email},\npassword: ${password}`
-        )
-
         // Send response
         return res.send({
             message: "User created successfully",

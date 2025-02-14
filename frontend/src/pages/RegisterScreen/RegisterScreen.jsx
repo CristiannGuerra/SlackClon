@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './RegisterScreen.css'
 import { LoginWrapper, RegisterFooter, RegisterHeader } from '../../components'
+import ENVIROMENT from '../../config/enviroment.config.js'
 
 const RegisterScreen = () => {
   // Initial State
@@ -15,9 +16,46 @@ const RegisterScreen = () => {
 
   // Handle Change
   const handleInput = (e) => {
+    const { name, value } = e.target
     setFormState((prevState) => {
-      return { ...prevState, [e.target.name]: e.target.value }
+      return { ...prevState, [name]: value }
     })
+  }
+
+  // Handle Submit
+  const handleSumbmitForm = async (e) => {
+    e.preventDefault()
+
+    const response = await fetch(
+      ENVIROMENT.URL_API
+      +
+      '/api/auth/register',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formState)
+      }
+    )
+    // Luego de hacer un fetch, el mismo nos devuelve una response, dicha response la podemos capturar
+
+    // response hace referencia al estado de nuestra consulta HTTP
+    // pero no es la response de la API, sino que de la red
+    // La response de la API es una promesa por lo cual debemos usar await
+    // Luego de capturar la response y como La response de la API es un json podemos usar el metodo json()
+    const responseData = await response.json()
+
+
+    if (responseData.ok) {
+      alert('User registered successfully')
+    } else {
+      if (responseData.status === 400) {
+        alert(responseData.message)
+      } else {
+        alert('Something went wrong')
+      }
+    }
   }
 
 
@@ -36,7 +74,7 @@ const RegisterScreen = () => {
           <label htmlFor="Password">Password</label>
           <input type="password" placeholder='Password' id='password' name='password' value={formState.password} onChange={handleInput} />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" onClick={handleSumbmitForm}>Register</button>
       </form>
 
     </div>

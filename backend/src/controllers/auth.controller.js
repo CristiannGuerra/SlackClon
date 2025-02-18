@@ -5,6 +5,7 @@ import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import sendMail from "../utils/mailer.utils.js"
 import User from "../models/User.model.js"
+import { isValidEmail } from "../utils/validate.utils.js"
 
 const createNewUserController = async (req, res) => {
     try {
@@ -21,6 +22,10 @@ const createNewUserController = async (req, res) => {
         if (!password) {
             throw new ServerError("Password is required", 400)
         }
+        if (!isValidEmail(email)) {
+            throw new ServerError("Email is invalid", 400)
+        }
+
 
         // Encrypt password
         const passwordHash = await bcrypt.hash(password, 10)
@@ -34,6 +39,7 @@ const createNewUserController = async (req, res) => {
 
         // Create user
         await UserRepository.create({ username, email, password: passwordHash, verification_token })
+
 
         // Send verification email
         await sendMail({

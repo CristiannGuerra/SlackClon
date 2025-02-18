@@ -15,7 +15,6 @@ class UserRepository {
             })
         } catch (error) {
             if (error.code === 11000) {
-                console.log(error)
                 if (error.keyPattern.email) {
                     throw new ServerError("Email already exists", 400)
                 }

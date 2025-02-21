@@ -19,7 +19,8 @@ const useApiRequest = (url) => {
             setApiResponse(() => {
                 return { ...initialApiResponseState, loading: true }
             })
-
+            
+            // Fetch API Response
             const response = await fetch(
                 url,
                 {

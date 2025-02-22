@@ -42,6 +42,9 @@ class UserRepository {
 
     async findUserByEmail(email) {
         const user_found = await User.findOne({ [USER_PROPS.EMAIL]: email })
+        if (!user_found) {
+            throw new ServerError("User not found", 404)
+        }
         return user_found
     }
 

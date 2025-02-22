@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import { HomeScreen, LoginScreen, RegisterScreen } from './pages'
+import { HomeScreen, LoginScreen, RegisterScreen, ResetPasswordScreen, RewritePasswordScreen } from './pages'
 
 function App() {
 
@@ -10,6 +10,8 @@ function App() {
       <Route path='/' element={<HomeScreen />} />
       <Route path='/register' element={<RegisterScreen />} />
       <Route path='/login' element={<LoginScreen />} />
+      <Route path='/reset-password' element={<ResetPasswordScreen/>} />
+      <Route path='/rewrite-password' element={<RewritePasswordScreen/>} />
     </Routes>
   )
 }

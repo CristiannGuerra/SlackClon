@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import './RegisterScreen.css'
 import { LoginWrapper, RegisterFooter, RegisterHeader } from '../../components'
 import ENVIROMENT from '../../config/enviroment.config.js'
-import ServerError from '../../utils/errors.utils.js'
 import { useApiRequest, useForm } from '../../hooks/index'
 
 const RegisterScreen = () => {
@@ -44,8 +43,8 @@ const RegisterScreen = () => {
   // Handle Submit Form
   const handleSumbmitForm = async (e) => {
     // try {
-      e.preventDefault()
-      await postRequest(formState)
+    e.preventDefault()
+    await postRequest(formState)
 
     //   // Set API Response Loading to true
     //   setApiResponse(() => {

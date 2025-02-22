@@ -83,7 +83,6 @@ const createNewUserController = async (req, res) => {
 
 }
 
-
 const verifyEmailController = async (req, res) => {
     try {
         // Get data from request
@@ -203,4 +202,64 @@ const loginController = async (req, res) => {
 }
 
 
-export { createNewUserController, verifyEmailController, loginController }
+const resetPasswordController = async (req, res) => {
+    try {
+        // Get data from request
+        const { email } = req.body
+
+        // Validate data
+        if (!email) {
+            throw new ServerError("Email is required", 400)
+        }
+
+        // Find user
+        const user_found = await UserRepository.findUserByEmail(email)
+
+        if (!user_found.verified) {
+            throw new ServerError("User not verified yet, please verify your account before continue", 400)
+        }
+
+        // Generate token
+        const reset_token = jwt.sign({email, _id: user_found._id}, ENVIRONMENT.SECRET_KEY_JWT, {expiresIn: '1h'})
+
+        // Send email to user with reset token
+        await sendMail({
+            to: email,
+            subject: "Reset Password",
+            html: `
+            <h1>Reset Password</h1>
+            <p> Hello ${user_found.username} you have requested to reset your password if you didn't do it, please ignore this email</p>
+            <p>Click <a href="${ENVIRONMENT.URL_FRONTEND}/rewrite-password/?reset_token=${reset_token}">here</a> to reset your password</p>
+            `
+        })
+
+        // Response
+        return res.send({
+            message: "Reset email sent successfully",
+            status: 200,
+            ok: true
+        })
+
+
+
+    } catch (error) {
+        // If error has a status, return it
+        if (error.status) {
+            return res.status(error.status).send({
+                message: error.message,
+                status: error.status,
+                ok: false
+            })
+        }
+        // If error doesn't have a status, return 500
+        return res.send({
+            message: error.message,
+            status: 500,
+            ok: false,
+        })
+
+    }
+}
+
+
+export { createNewUserController, verifyEmailController, loginController, resetPasswordController }

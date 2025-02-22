@@ -1,5 +1,5 @@
-import useForm from "./useForm";
-import useApiRequest from "./useApiRequest";
+import useForm from "./useForm.jsx";
+import useApiRequest from "./useApiRequest.jsx";
 
 
 export { useForm, useApiRequest }

@@ -83,6 +83,7 @@ const createNewUserController = async (req, res) => {
 
 }
 
+
 const verifyEmailController = async (req, res) => {
     try {
         // Get data from request
@@ -215,12 +216,8 @@ const resetPasswordController = async (req, res) => {
         // Find user
         const user_found = await UserRepository.findUserByEmail(email)
 
-        if (!user_found.verified) {
-            throw new ServerError("User not verified yet, please verify your account before continue", 400)
-        }
-
         // Generate token
-        const reset_token = jwt.sign({email, _id: user_found._id}, ENVIRONMENT.SECRET_KEY_JWT, {expiresIn: '1h'})
+        const reset_token = jwt.sign({ email, _id: user_found._id }, ENVIRONMENT.SECRET_KEY_JWT, { expiresIn: '1h' })
 
         // Send email to user with reset token
         await sendMail({
@@ -262,4 +259,43 @@ const resetPasswordController = async (req, res) => {
 }
 
 
-export { createNewUserController, verifyEmailController, loginController, resetPasswordController }
+const rewritePasswordController = async (req, res) => {
+    try {
+        // Get data from request
+        const { password, reset_token } = req.body
+        const { _id } = jwt.verify(reset_token, ENVIRONMENT.SECRET_KEY_JWT)
+
+        // Validate data
+        if (!password) {
+            throw new ServerError("Password is required", 400)
+        }
+
+        // Hash password
+        const salt = await bcrypt.genSalt(10)
+        password = await bcrypt.hash(password, salt)
+
+        // Update user
+        UserRepository.updateUserById(_id, password)
+
+    } catch (error) {
+        // If error has a status, return it
+        if (error.status) {
+            return res.status(error.status).send({
+                message: error.message,
+                status: error.status,
+                ok: false
+            })
+        }
+        // If error doesn't have a status, return 500
+        return res.send({
+            message: error.message,
+            status: 500,
+            ok: false,
+        })
+
+    }
+
+}
+
+
+export { createNewUserController, verifyEmailController, loginController, resetPasswordController, rewritePasswordController }

@@ -271,11 +271,16 @@ const rewritePasswordController = async (req, res) => {
         }
 
         // Hash password
-        const salt = await bcrypt.genSalt(10)
-        password = await bcrypt.hash(password, salt)
+        const hashedPassword = await bcrypt.hash(password, 10)
 
         // Update user
-        UserRepository.updateUserById(_id, password)
+        await UserRepository.updateUserById(_id, hashedPassword)
+
+        return res.send({
+            message: "Password updated successfully",
+            status: 200,
+            ok: true
+        })
 
     } catch (error) {
         // If error has a status, return it

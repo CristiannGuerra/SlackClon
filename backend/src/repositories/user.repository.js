@@ -51,12 +51,12 @@ class UserRepository {
         return user_found
     }
 
-    async updateUserById(id, password) {
-        const user_found = await User.findById(id)
+    async updateUserById(_id, newPassword) {
+        const user_found = await User.findById(_id)
         if (!user_found) {
             throw new ServerError("User not found", 404)
         }
-        user_found.password = password
+        user_found.password = newPassword
         await user_found.save()
     }
         

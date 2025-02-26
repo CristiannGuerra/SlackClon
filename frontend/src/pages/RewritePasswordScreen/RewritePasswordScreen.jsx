@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { useApiRequest, useForm } from '../../hooks'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import ENVIROMENT from '../../config/enviroment.config'
+
 
 const RewritePasswordScreen = () => {
   const navigate = useNavigate()
@@ -25,17 +27,17 @@ const RewritePasswordScreen = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await putRequest({password: formState.password, reset_token})
+    await putRequest({ password: formState.password, reset_token })
   }
 
 
   return (
     <>
       <h1>Rewrite Password</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="password">Enter your new password</label>
         <input type="text" id='password' name='password' value={formState.password} onChange={handleInput} />
-        <button type="button" onSubmit={handleSubmit}>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </>
   )

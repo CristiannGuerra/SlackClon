@@ -1,5 +1,6 @@
 import express from "express"
 import { createNewUserController, loginController, resetPasswordController, rewritePasswordController, verifyEmailController } from "../controllers/auth.controller.js"
+import { randomMiddleware } from "../middlewares/authMiddleware.js"
 
 const authRouter = express.Router()
 

@@ -2,35 +2,20 @@ import jwt from "jsonwebtoken"
 import ENVIRONMENT from "../config/enviroment.config.js"
 import ServerError from "../utils/errors.utils.js"
 
-const randomMiddleware = (req, res, next) => {
-    const { email, password } = req.body
-
-    
-
-    console.log("Random middleware executed")
-    
-    res.send({
-        message: "Random middleware executed",
-        status: 200,
-        ok: true,
-        email: email
-    })
-
-    next()
-}
-
 const authMiddleware = (req, res, next) => {
     try {
         // Get data from request
-        const authorization_header = req.headers.authorization
+        const authorization_header = req.headers["authorization"]
 
         // Validate data
         if (!authorization_header) {
             throw new ServerError("Authorization header is required", 400)
         }
 
-        // Verify token
+        // Get authorization token
         const authorization_token = authorization_header.split(" ")[1]
+
+        // Verify token
         if (!authorization_token) {
             throw new ServerError("Authorization token is required", 400)
         }
@@ -63,4 +48,4 @@ const authMiddleware = (req, res, next) => {
     }
 }
 
-export { randomMiddleware }
+export { authMiddleware }

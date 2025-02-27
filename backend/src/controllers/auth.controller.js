@@ -161,7 +161,7 @@ const loginController = async (req, res) => {
         // Generate token
         const autorizathion_token = jwt.sign(
             {
-                id: user_found._id,
+                _id: user_found._id,
                 username: user_found.username,
                 email: user_found.email
             },

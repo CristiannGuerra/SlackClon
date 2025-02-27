@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useApiRequest, useForm } from '../../hooks'
 import ENVIROMENT from '../../config/enviroment.config'
+import { AuthContext } from '../../Context/AuthContext'
 
 const LoginScreen = () => {
+    const { login } = useContext(AuthContext)
+
     const formInitialState = {
         email: '',
         password: ''
     }
-
 
     const { formState, handleInput } = useForm(formInitialState)
 
@@ -17,13 +19,13 @@ const LoginScreen = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         await postRequest(formState)
+        login(apiResponse.data.payload.autorizathion_token)
     }
-
 
     return (
         <>
             <h1>Login</h1>
-            <form onSubmit={handleSubmit}> 
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="email">Email</label>
                     <input

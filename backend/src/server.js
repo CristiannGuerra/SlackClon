@@ -3,6 +3,7 @@ import express from "express";
 import authRouter from "./routes/auth.router.js";
 import mongoose from "./config/mongoDB.config.js";
 import cors from "cors"
+import { authMiddleware } from "./middlewares/authMiddleware.js";
 
 // Create server
 const app = express()
@@ -25,3 +26,11 @@ app.listen(ENVIRONMENT.PORT, () => {
 
 // Routers
 app.use("/api/auth", authRouter)
+// Test Middleware
+app.use("/api/test/comprar", authMiddleware, (req, res) => {
+
+    res.json({
+        ok: true,
+        message: "Producto comprado"
+    })
+})

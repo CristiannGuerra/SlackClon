@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useApiRequest, useForm } from '../../hooks'
 import ENVIROMENT from '../../config/enviroment.config'
 import { AuthContext } from '../../Context/AuthContext'
@@ -15,11 +15,18 @@ const LoginScreen = () => {
 
     const { apiResponse, postRequest } = useApiRequest(ENVIROMENT.URL_API + '/api/auth/login')
 
+    useEffect(() => {
+        if(apiResponse.data) {
+            login(apiResponse.data.payload.autorizathion_token)
+        }
+    }, [apiResponse])
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         await postRequest(formState)
-        login(apiResponse.data.payload.autorizathion_token)
+        // No funciona porque no recibe el token
+        // login(apiResponse.data.payload.autorizathion_token)
     }
 
     return (

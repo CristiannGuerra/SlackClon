@@ -22,7 +22,6 @@ class UserRepository {
                     throw new ServerError("Username already exists", 400)
                 }
             }
-            console.log(error)
             throw error
         }
     }

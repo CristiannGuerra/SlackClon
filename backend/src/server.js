@@ -1,10 +1,10 @@
+import mongoose from "./config/mongoDB.config.js";
 import ENVIRONMENT from "./config/enviroment.config.js";
 import express from "express";
-import authRouter from "./routes/auth.router.js";
-import mongoose from "./config/mongoDB.config.js";
 import cors from "cors"
-import { authMiddleware } from "./middlewares/authMiddleware.js";
+import authRouter from "./routes/auth.router.js";
 import workspace_router from "./routes/workspace.router.js";
+import channelRouter from "./routes/channel.router.js";
 
 // Create server
 const app = express()
@@ -28,3 +28,4 @@ app.listen(ENVIRONMENT.PORT, () => {
 // Routers
 app.use("/api/auth", authRouter)
 app.use("/api/workspace", workspace_router)
+app.use("/api/channel", channelRouter)

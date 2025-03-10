@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './RegisterScreen.css'
-import { LoginWrapper, RegisterFooter, RegisterHeader } from '../../components'
 import ENVIROMENT from '../../config/enviroment.config.js'
 import { useApiRequest, useForm } from '../../hooks/index'
 

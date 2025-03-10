@@ -1,6 +1,7 @@
-import RegisterHeader from "./RegisterHeader/RegisterHeader";
-import LoginWrapper from "./LoginWrapper/LoginWrapper";
-import RegisterFooter from "./RegisterFooter/RegisterFooter";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
+import AuthBody from "./AuthBody/AuthBody";
+import AuthHeader from "./AuthHeader/AuthHeader";
+import AuthFooter from "./AuthFooter/AuthFooter";
 
-export {RegisterHeader, LoginWrapper, RegisterFooter, ProtectedRoute}
+
+export {ProtectedRoute, AuthBody, AuthHeader, AuthFooter}

@@ -2,6 +2,9 @@ import React, { useContext, useEffect } from 'react'
 import { useApiRequest, useForm } from '../../hooks'
 import ENVIROMENT from '../../config/enviroment.config'
 import { AuthContext } from '../../Context/AuthContext'
+import './LoginScreen.css'
+import { AuthBody, AuthHeader, AuthFooter } from '../../components'
+
 
 const LoginScreen = () => {
     const { login } = useContext(AuthContext)
@@ -30,8 +33,8 @@ const LoginScreen = () => {
     }
 
     return (
-        <>
-            <h1>Login</h1>
+        <div className='login-screen'>
+            {/* <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="email">Email</label>
@@ -55,8 +58,11 @@ const LoginScreen = () => {
                     ? <span>Loading...</span>
                     : <button type="submit">Login</button>}
 
-            </form>
-        </>
+            </form> */}
+            <AuthHeader/>
+            <AuthBody/>
+            <AuthFooter/>
+        </div>
     )
 }
 

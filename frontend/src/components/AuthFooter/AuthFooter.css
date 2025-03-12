@@ -3,5 +3,16 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 8px
+    gap: 16px;
+    padding: 32px;
+    font-size: 15px;
+    color: var(--brand-core-gray);
+}
+
+.auth-footer-region {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
 }

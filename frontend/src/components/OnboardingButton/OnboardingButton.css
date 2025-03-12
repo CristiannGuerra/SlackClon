@@ -1,0 +1,21 @@
+.onboarding-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 96px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid var(--brand-core-border);
+    width: 100%;
+    min-width: 96px;
+    height: 44px;
+}
+
+.filled {
+    background-color: var(--brand-core-aubergine);
+    color: var(--brand-core-white);
+}

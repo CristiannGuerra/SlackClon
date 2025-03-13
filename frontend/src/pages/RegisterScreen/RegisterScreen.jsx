@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import './RegisterScreen.css'
 import ENVIROMENT from '../../config/enviroment.config.js'
 import { useApiRequest, useForm } from '../../hooks/index'
+import { AuthFooter, AuthHeader, OnboardingButton } from '../../components/index.js'
+import { FcGoogle } from "react-icons/fc"; // Google Icon
+import { FaApple } from "react-icons/fa"; // Apple Icon
 
 const RegisterScreen = () => {
   // // Initial State Form
@@ -11,96 +14,22 @@ const RegisterScreen = () => {
     password: ''
   }
 
-  // // FormState
-  // const [formState, setFormState] = useState(formInitialState)
-
-  // // Handle Change Input
-  // const handleInput = (e) => {
-  //   const { name, value } = e.target
-  //   setFormState((prevState) => {
-  //     return { ...prevState, [name]: value }
-  //   })
-  // }
-
   // Custom Hook Form
   const { formState, handleInput } = useForm(formInitialState)
 
   // Custom Hook API Request
   const { apiResponse, postRequest } = useApiRequest(ENVIROMENT.URL_API + '/api/auth/register')
 
-
-  // // Initial API Response State
-  // const initialApiResponseState = {
-  //   loading: false,
-  //   error: null,
-  //   data: null
-  // }
-
-  // // API Response State
-  // const [apiResponse, setApiResponse] = useState(initialApiResponseState)
-
   // Handle Submit Form
   const handleSumbmitForm = async (e) => {
-    // try {
     e.preventDefault()
     await postRequest(formState)
-
-    //   // Set API Response Loading to true
-    //   setApiResponse(() => {
-    //     return { ...initialApiResponseState, loading: true }
-    //   })
-
-
-    //   const response = await fetch(
-    //     ENVIROMENT.URL_API
-    //     +
-    //     '/api/auth/register',
-    //     {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json'
-    //       },
-    //       body: JSON.stringify(formState)
-    //     }
-    //   )
-    //   // Luego de hacer un fetch, el mismo nos devuelve una response, dicha response la podemos capturar
-
-    //   // response hace referencia al estado de nuestra consulta HTTP
-    //   // pero no es la response de la API, sino que de la red
-    //   // La response de la API es una promesa por lo cual debemos usar await
-    //   // Luego de capturar la response y como La response de la API es un json podemos usar el metodo json()
-    //   const responseData = await response.json()
-
-    //   if (responseData.ok) {
-    //     setApiResponse((prevState) => {
-    //       return { ...prevState, data: responseData }
-    //     })
-    //   } else {
-    //     throw new ServerError(responseData.message, responseData.ok)
-    //   }
-
-    // } catch (error) {
-    //   setApiResponse((prevState) => {
-    //     if (error.status) {
-    //       return { ...prevState, error: error.message }
-    //     } else {
-    //       return { ...prevState, error: 'Something went wrong' }
-    //     }
-    //   })
-
-    // }
-    // finally {
-    //   // Set API Response Loading to false
-    //   setApiResponse((prevState) => {
-    //     return { ...prevState, loading: false }
-    //   })
-    // }
   }
 
 
   return (
     <div className='register-screen'>
-      <form>
+      {/* <form>
         <div>
           <label htmlFor="username">Username</label>
           <input type="text" placeholder='Username' id='username' name='username' value={formState.username} onChange={handleInput} />
@@ -119,7 +48,31 @@ const RegisterScreen = () => {
             : <button type="submit" onClick={handleSumbmitForm}>Register</button>
         }
 
+      </form> */}
+      <AuthHeader />
+      <div className='auth-body-title'>
+        <h1 className='auth-body-title-text'>First, enter your email</h1>
+        <span className='auth-body-title-description'>We suggest using the <strong>email address you use at work.</strong></span>
+      </div>
+      <form className='auth-body-form' onSubmit={handleSumbmitForm}>
+        <label hidden htmlFor="username"></label>
+        <input className='auth-body-form-input' type="text" name='username' id='username' placeholder='John Doe' value={formState.email} onChange={handleInput} required />
+        <label hidden htmlFor="email"></label>
+        <input className='auth-body-form-input' type="email" name='email' id='email' placeholder='name@work-email.com' value={formState.email} onChange={handleInput} required />
+        <label hidden htmlFor="password"></label>
+        <input className='auth-body-form-input' type="text" name='password' id='password' placeholder='password' value={formState.password} onChange={handleInput} required />
+        <OnboardingButton text={"Continue"} isfilled={true} />
       </form>
+      <div className='auth-body-divider'>
+        <div className='auth-body-divider-line'></div>
+        <span className='auth-body-divider-or' >OR</span>
+        <div className='auth-body-divider-line'></div>
+      </div>
+      <div className='auth-body-buttons'>
+        <OnboardingButton text={"Sign In With Google"} reactIcon={<FcGoogle />} />
+        <OnboardingButton text={"Sign In With Apple"} reactIcon={<FaApple />} />
+      </div>
+      <AuthFooter />
 
     </div>
   )

@@ -3,7 +3,7 @@ import "./AuthBody.css"
 import { OnboardingButton } from "../index"
 import { FcGoogle } from "react-icons/fc"; // Google Icon
 import { FaApple } from "react-icons/fa"; // Apple Icon
-import { HiOutlineSparkles } from "react-icons/hi2";
+import { HiOutlineSparkles } from "react-icons/hi2"; // Sparkles Icon
 import { useApiRequest, useForm } from '../../hooks';
 import ENVIROMENT from '../../config/enviroment.config';
 import { AuthContext } from '../../Context/AuthContext';

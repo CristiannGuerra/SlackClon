@@ -37,7 +37,7 @@ const RegisterBody = () => {
             </div>
             <form className='auth-body-form' onSubmit={handleSumbmitForm}>
                 <label hidden htmlFor="username"></label>
-                <input className='auth-body-form-input' type="text" name='username' id='username' placeholder='John Doe' value={formState.email} onChange={handleInput} required />
+                <input className='auth-body-form-input' type="text" name='username' id='username' placeholder='John Doe' value={formState.username} onChange={handleInput} required />
                 <label hidden htmlFor="email"></label>
                 <input className='auth-body-form-input' type="email" name='email' id='email' placeholder='name@work-email.com' value={formState.email} onChange={handleInput} required />
                 <label hidden htmlFor="password"></label>

@@ -1,0 +1,10 @@
+/* AuthBody */
+.register-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    gap: 32px;
+    justify-self: start;
+}

@@ -34,6 +34,12 @@ class MessageRepository {
         // Return message
         return new_message
     }
+
+    async getMessagesByChannelId(channel_id) {
+        const messages_list = await Message.find({ [MESSAGE_PROPS.CHANNEL_REF]: channel_id })
+
+        return messages_list
+    }
 }
 
 const messageRepository = new MessageRepository()

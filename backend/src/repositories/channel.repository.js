@@ -31,6 +31,12 @@ class ChannelRepository {
             throw error
         }
     }
+
+    async getChannelsByWorkspaceId(workspace_id) {        
+        const channels_list = await Channel.find({ [CHANNEL_PROPS.WORKSPACE_REF]: workspace_id })
+
+        return channels_list
+    }
 }
 
 const channelRepository = new ChannelRepository()

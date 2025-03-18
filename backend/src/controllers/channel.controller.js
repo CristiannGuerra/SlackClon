@@ -48,7 +48,42 @@ const createChannelController = async (req, res) => {
         })
 
     }
-
 }
 
-export { createChannelController }
+const getChannelsController = async (req, res) => {
+    try {
+        const { workspace_id } = req.params
+
+        const channels = await channelRepository.getChannelsByWorkspaceId(workspace_id)
+
+        res.json({
+            message: "Channels found successfully",
+            status: 200,
+            ok: true,
+            payload: {
+                channels
+            }
+        })
+
+    } catch (error) {
+        // If error has a status, return it
+        if (error.status) {
+            return res.status(error.status).send({
+                message: error.message,
+                status: error.status,
+                ok: false
+            })
+        }
+
+        // Return internal server error
+        return res.status(500).send({
+            message: "Internal Server Error",
+            status: 500,
+            ok: false,
+            error: error
+        })
+
+    }
+}
+
+export { createChannelController, getChannelsController }

@@ -57,7 +57,14 @@ class WorkspaceRepository {
         }
 
     }
+
+    async getWorkspacesByUserId (owner_id) {
+        const workspaces_list = await Workspace.find({[WORKSPACE_PROPS.MEMBERS]: owner_id})
+
+        return workspaces_list
+    }
 }
+
 
 const workspaceRepository = new WorkspaceRepository()
 

@@ -52,7 +52,26 @@ const sendMessageToChannelController = async (req, res) => {
         })
 
     }
-
 }
 
-export { sendMessageToChannelController }
+const getMessagesController = async (req, res) => {
+    try {
+        const { channel_id } = req.params
+
+        const messages = await messageRepository.getMessagesByChannelId(channel_id)
+
+        res.json({
+            message: "Messages found successfully",
+            status: 200,
+            ok: true,
+            payload: {
+                messages
+            }
+        })
+
+    } catch (error) {
+
+    }
+}
+
+export { sendMessageToChannelController, getMessagesController }

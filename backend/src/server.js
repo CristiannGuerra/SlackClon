@@ -19,7 +19,11 @@ app.use(cors())
 // ))
 
 // Use JSON
-app.use(express.json())
+app.use(express.json(
+    {
+        limit: "3mb"
+    }
+))
 
 app.listen(ENVIRONMENT.PORT, () => {
     console.log(`Server running on port http://localhost:${ENVIRONMENT.PORT}`)

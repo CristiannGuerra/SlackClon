@@ -1,5 +1,8 @@
 import React from 'react'
 import './LoggedBody.css'
+import WorkspaceItem from './../WorkspaceItem/WorkspaceItem';
+
+
 
 const LoggedBody = () => {
     return (
@@ -9,20 +12,7 @@ const LoggedBody = () => {
                 <span className='logged-body-title-description'>Choose a workspace below to get back to working with your team.</span>
             </div>
             <div className='workspace-list'>
-                <div className='workspace-item'>
-                    <div className='workspace-item-avatar'>Logo</div>
-                    <div className='workspace-item-info-container'>
-                        <div className='workspace-item-info'>
-                            <div className='workspace-item-name'>No Country</div>
-                            <div className='workspace-item-description'>
-                                <div className='workspace-item-members-avatars'>avatars</div>
-                                <div className='workspace-item-members-count'>11.954 members</div>
-                            </div>
-                        </div>
-                        <div className='workspace-item-open'>Open</div>
-                    </div>
-
-                </div>
+                <WorkspaceItem />
             </div>
             <div className='create-workspace-section'></div>
         </div>

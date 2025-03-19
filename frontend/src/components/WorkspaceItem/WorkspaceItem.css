@@ -1,0 +1,44 @@
+/* Workspace item */
+.workspace-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px 24px 20px;
+    border: 1px solid #DDDDDD;
+    gap: 13px;
+}
+
+/* 
+.workspace-item-avatar {
+
+}
+*/
+
+.workspace-item-info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.workspace-item-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.workspace-item-name {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+.workspace-item-description {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+}

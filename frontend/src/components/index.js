@@ -6,6 +6,7 @@ import OnboardingButton from "./OnboardingButton/OnboardingButton";
 import RegisterBody from "./RegisterBody/RegisterBody";
 import RegisterHeader from "./RegisterHeader/RegisterHeader";
 import LoggedBody from "./LoggedBody/LoggedBody";
+import WorkspaceItem from "./WorkspaceItem/WorkspaceItem";
 
 
-export {ProtectedRoute, AuthBody, AuthHeader, AuthFooter, OnboardingButton, RegisterBody, RegisterHeader, LoggedBody}
+export { ProtectedRoute, AuthBody, AuthHeader, AuthFooter, OnboardingButton, RegisterBody, RegisterHeader, LoggedBody, WorkspaceItem }

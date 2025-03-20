@@ -9,7 +9,16 @@ const Workspace = () => {
 
 
     return (
-        <div>Workspace</div>
+        <div>
+            {/* 
+            Toolbar
+            Navbar
+            Sidebar => ChannelsList
+                    => DirectMessagesList
+            MessageArea => MessageList
+                        => MessageInput
+            */}
+        </div>
     )
 }
 

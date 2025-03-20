@@ -4,7 +4,6 @@ import ServerError from "../utils/errors.utils.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import sendMail from "../utils/mailer.utils.js"
-import User from "../models/User.model.js"
 import { isValidEmail } from "../utils/validate.utils.js"
 
 const createNewUserController = async (req, res) => {

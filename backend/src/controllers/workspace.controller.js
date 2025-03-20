@@ -135,4 +135,37 @@ const getWorkspacesController = async (req, res) => {
     }
 }
 
-export { createWorkspaceController, inviteUserToWorkspaceController, getWorkspacesController }
+const getWorkspaceController = async (req, res) => {
+    try {
+        const { workspace_id } = req.params
+
+        const workspace = await workspaceRepository.findWorkspaceById(workspace_id)
+
+        res.json({
+            message: "Workspace found successfully",
+            status: 200,
+            ok: true,
+            payload: {
+                workspace
+            }
+        })
+
+    } catch (error) {
+        // If error has a status, return it
+        if (error.status) {
+            return res.status(error.status).send({
+                message: error.message,
+                status: error.status,
+                ok: false
+            })
+        }
+
+        return res.status(500).send({
+            message: error.message,
+            status: 500,
+            ok: false
+        })
+    }
+}
+
+export { createWorkspaceController, inviteUserToWorkspaceController, getWorkspacesController, getWorkspaceController }

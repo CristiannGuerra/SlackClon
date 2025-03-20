@@ -24,6 +24,7 @@ const AuthBody = () => {
   useEffect(() => {
     if (apiResponse.data) {
       login(apiResponse.data.payload.autorizathion_token)
+      window.location.href = '/login-success';
     }
   }, [apiResponse])
 

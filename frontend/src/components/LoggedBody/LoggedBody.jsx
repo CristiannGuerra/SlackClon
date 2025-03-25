@@ -1,10 +1,81 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './LoggedBody.css'
-import WorkspaceItem from './../WorkspaceItem/WorkspaceItem';
+import ENVIROMENT from '../../config/enviroment.config';
+import WorkspaceItem from '../WorkspaceItem/WorkspaceItem';
 
 
 
 const LoggedBody = () => {
+    const initialApiResponseState = {
+        loading: false,
+        error: null,
+        data: null
+    }
+
+    const [apiResponse, setApiResponse] = useState(initialApiResponseState)
+
+
+    useEffect(() => {
+        // Fetch API Response
+        const fetchWorkspaces = async () => {
+            try {
+                // Set API Response Loading to true
+                setApiResponse(() => {
+                    return { ...initialApiResponseState, loading: true }
+                })
+
+                // Get Auth Token
+                const token = sessionStorage.getItem("authorization_token")
+
+                // Response
+                const response = await fetch(
+                    ENVIROMENT.URL_API + '/api/workspace',
+                    {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        }
+                    })
+
+                // Response Data to JSON
+                const responseData = await response.json()
+
+                if (responseData.ok) {
+                    setApiResponse((prevState) => {
+                        return { ...prevState, data: responseData }
+                    })
+                } else {
+                    window.location.href = '/login';
+                }
+
+            } catch (error) {
+                // Set API Error
+                setApiResponse((prevState) => {
+                    if (error.status) {
+                        return { ...prevState, error: error.message }
+                    } else {
+                        return { ...prevState, error: 'Something went wrong' }
+                    }
+                })
+
+            }
+
+            finally {
+                // Set API Response Loading to false
+                setApiResponse((prevState) => {
+                    return { ...prevState, loading: false }
+                })
+            }
+        }
+
+        fetchWorkspaces()
+    }, [])
+
+    console.log(apiResponse.data?.payload.workspaces); // No arrojará error si data es null/undefined
+
+    let workspaceJsx = apiResponse.data?.payload.workspaces.map((workspace, index) => <WorkspaceItem id={workspace._id} key={index} name={workspace.name} members={workspace.members} />)
+
     return (
         <div className='logged-body'>
             <div className='logged-body-title'>
@@ -12,7 +83,7 @@ const LoggedBody = () => {
                 <span className='logged-body-title-description'>Choose a workspace below to get back to working with your team.</span>
             </div>
             <div className='workspace-list'>
-                <WorkspaceItem />
+                {workspaceJsx}
             </div>
             <div className='create-workspace-section'></div>
         </div>

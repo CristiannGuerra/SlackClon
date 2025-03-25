@@ -19,3 +19,7 @@
     background-color: var(--brand-core-aubergine);
     color: var(--brand-core-white);
 }
+
+.filled .filled-text {
+    color: var(--brand-core-white);
+}

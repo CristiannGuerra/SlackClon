@@ -1,23 +1,25 @@
 import React from 'react'
 import './WorkspaceItem.css'
 import { FaArrowRight } from "react-icons/fa6";
+import { Link } from 'react-router-dom'
 
+// http://localhost:3000/api/workspace/
 
-const WorkspaceItem = () => {
+const WorkspaceItem = ({ name, members, id }) => {
     return (
-        <a href='#' className='workspace-item'>
+        <Link to={`/workspace/${id}`} className='workspace-item'>
             <div className='workspace-item-avatar'>Logo</div>
             <div className='workspace-item-info-container'>
                 <div className='workspace-item-info'>
-                    <div className='workspace-item-name'>No Country</div>
+                    <div className='workspace-item-name'>{name}</div>
                     <div className='workspace-item-description'>
                         <div className='workspace-item-members-avatars'>avatars</div>
-                        <div className='workspace-item-members-count'>11.954 members</div>
+                        <div className='workspace-item-members-count'>{members.length} members</div>
                     </div>
-                </div>                
+                </div>
                 <FaArrowRight className='workspace-item-open' />
             </div>
-        </a>
+        </Link>
     )
 }
 

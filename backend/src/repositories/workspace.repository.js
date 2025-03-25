@@ -58,10 +58,17 @@ class WorkspaceRepository {
 
     }
 
-    async getWorkspacesByUserId (owner_id) {
-        const workspaces_list = await Workspace.find({[WORKSPACE_PROPS.MEMBERS]: owner_id})
+    async getWorkspacesByUserId(owner_id) {
+        const workspaces_list = await Workspace.find({ [WORKSPACE_PROPS.MEMBERS]: owner_id })
 
         return workspaces_list
+    }
+
+    async addChannelToWorkspace({ workspace_id, channel_id }) {
+        
+        return await Workspace.findByIdAndUpdate(workspace_id,
+            { $push: { [WORKSPACE_PROPS.CHANNELS]: channel_id } },
+            { new: true })
     }
 }
 

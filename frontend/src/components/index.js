@@ -7,6 +7,18 @@ import RegisterBody from "./RegisterBody/RegisterBody";
 import RegisterHeader from "./RegisterHeader/RegisterHeader";
 import LoggedBody from "./LoggedBody/LoggedBody";
 import WorkspaceItem from "./WorkspaceItem/WorkspaceItem";
+import Toolbar from "./Toolbar/Toolbar"
 
 
-export { ProtectedRoute, AuthBody, AuthHeader, AuthFooter, OnboardingButton, RegisterBody, RegisterHeader, LoggedBody, WorkspaceItem }
+export {
+    ProtectedRoute,
+    AuthBody,
+    AuthHeader,
+    AuthFooter,
+    OnboardingButton,
+    RegisterBody,
+    RegisterHeader,
+    LoggedBody,
+    WorkspaceItem,
+    Toolbar
+}

@@ -3,8 +3,6 @@ import './WorkspaceItem.css'
 import { FaArrowRight } from "react-icons/fa6";
 import { Link } from 'react-router-dom'
 
-// http://localhost:3000/api/workspace/
-
 const WorkspaceItem = ({ name, members, id }) => {
     return (
         <Link to={`/workspace/${id}`} className='workspace-item'>

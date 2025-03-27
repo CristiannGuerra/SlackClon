@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Workspace.css'
 import { useParams } from 'react-router-dom'
 import ENVIROMENT from './../../config/enviroment.config';
-import { Toolbar } from '../../components';
+import { Toolbar, Navbar } from '../../components';
 
 const Workspace = () => {
     // API Response
@@ -82,6 +82,18 @@ const Workspace = () => {
     return (
         <div className='workspace'>
             <Toolbar workspaceName={apiResponse.data?.payload.workspace.name} />
+            <div className='workspace-container'>
+                <Navbar />
+                <div className='workspace-sidebar'>
+                    <div className='workspace-sidebar-channels-list'></div>
+                    <div className='workspace-sidebar-direct-messages-list'></div>
+                </div>
+                <div className='workspace-message-area'>
+                    <div className='workspace-message-area-message-list'></div>
+                    <div className='workspace-message-area-message-input'></div>
+                </div>
+            </div>
+
             {/* 
             Toolbar
             Navbar

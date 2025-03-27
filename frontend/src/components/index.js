@@ -8,6 +8,7 @@ import RegisterHeader from "./RegisterHeader/RegisterHeader";
 import LoggedBody from "./LoggedBody/LoggedBody";
 import WorkspaceItem from "./WorkspaceItem/WorkspaceItem";
 import Toolbar from "./Toolbar/Toolbar"
+import Navbar from "./Navbar/Navbar";
 
 
 export {
@@ -20,5 +21,6 @@ export {
     RegisterHeader,
     LoggedBody,
     WorkspaceItem,
-    Toolbar
+    Toolbar,
+    Navbar
 }

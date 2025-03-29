@@ -72,8 +72,6 @@ const LoggedBody = () => {
         fetchWorkspaces()
     }, [])
 
-    console.log(apiResponse.data?.payload.workspaces); // No arrojará error si data es null/undefined
-
     let workspaceJsx = apiResponse.data?.payload.workspaces.map((workspace, index) => <WorkspaceItem id={workspace._id} key={index} name={workspace.name} members={workspace.members} />)
 
     return (

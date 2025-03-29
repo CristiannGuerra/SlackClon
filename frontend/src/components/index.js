@@ -9,6 +9,7 @@ import LoggedBody from "./LoggedBody/LoggedBody";
 import WorkspaceItem from "./WorkspaceItem/WorkspaceItem";
 import Toolbar from "./Toolbar/Toolbar"
 import Navbar from "./Navbar/Navbar";
+import DropdownItem from "./DropdownItem/DropdownItem";
 
 
 export {
@@ -22,5 +23,6 @@ export {
     LoggedBody,
     WorkspaceItem,
     Toolbar,
-    Navbar
+    Navbar,
+    DropdownItem
 }

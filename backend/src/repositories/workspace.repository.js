@@ -6,7 +6,7 @@ class WorkspaceRepository {
 
     async findWorkspaceById(workspace_id) {
         try {
-            return await Workspace.findById(workspace_id).populate('channels', 'name')
+            return await Workspace.findById(workspace_id).populate('channels', 'name').populate('members', 'username')
 
         } catch (error) {
             throw error

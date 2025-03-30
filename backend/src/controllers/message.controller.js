@@ -6,7 +6,7 @@ const sendMessageToChannelController = async (req, res) => {
         // Get data from request
         const { channel_id } = req.params
         const { _id: sender } = req.user
-        const { content } = req.body
+        const { message } = req.body
 
         // Validate data
         if (!channel_id) {
@@ -15,12 +15,12 @@ const sendMessageToChannelController = async (req, res) => {
         if (!sender) {
             throw new ServerError("Sender is required", 400)
         }
-        if (!content) {
-            throw new ServerError("Content is required", 400)
+        if (!message) {
+            throw new ServerError("Message is required", 400)
         }
 
         // Create message
-        const new_message = await messageRepository.createMessage({ channel_id, sender, content })
+        const new_message = await messageRepository.createMessage({ channel_id, sender, content: message })
 
         // Response to client
         res.json({

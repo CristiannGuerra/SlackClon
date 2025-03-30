@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Workspace.css'
 import { useParams } from 'react-router-dom'
 import ENVIROMENT from './../../config/enviroment.config';
-import { Toolbar, Navbar, DropdownItem } from '../../components';
+import { Toolbar, Navbar, DropdownItem, MessageList, MessageInput } from '../../components';
 import { IoCreateOutline } from "react-icons/io5";
 import { PiChatCircleTextLight } from "react-icons/pi";
 import { MdOutlineHeadset } from "react-icons/md";
@@ -81,13 +81,11 @@ const Workspace = () => {
         fetchWorkspace()
     }, [])
 
-    // No arrojará error si data es null/undefined
-    // console.log(apiResponse.data?.payload.workspace.name)
 
     // Channels
     const channelsJsx = apiResponse.data?.payload.workspace.channels.map((channel, index) => {
         return (
-            <DropdownItem channelName={channel.name} key={index} />
+            <DropdownItem name={channel.name} id={channel._id} key={index} />
         )
     })
 
@@ -95,7 +93,7 @@ const Workspace = () => {
     // Membres
     const membersJsx = apiResponse.data?.payload.workspace.members.map((member, index) => {
         return (
-            <DropdownItem channelName={member.username} key={index} />
+            <DropdownItem name={member.username} key={index} />
         )
     })
 
@@ -120,6 +118,7 @@ const Workspace = () => {
                             <div>Juntas</div>
                         </div>
                     </div>
+                    {/* Channels */}
                     <div className='workspace-sidebar-channels-list'>
                         <button className='dropdown-menu-button' type="button">
                             <IoMdArrowDropdown className='dropdown-menu-button-icon' />
@@ -141,6 +140,7 @@ const Workspace = () => {
                         </div>
                     </div>
                 </div>
+                {/* Messages Area */}
                 <div className='workspace-message-area'>
                     <div className='workspace-message-area-header'>
                         <div className='workspace-message-area-header-channel'>
@@ -156,10 +156,10 @@ const Workspace = () => {
                             <div>Archivos</div>
                         </div>
                     </div>
-                    <div className='workspace-message-area-message-list'>
-                        <div className='workspace-message-area-message'>a</div>
-                    </div>
-                    <input className='workspace-message-area-message-input' type="text" name="" id="" />
+                    {/* MessageList */}
+                    <MessageList />
+                    {/* New Message Input */}
+                    <MessageInput />
                 </div>
             </div>
         </div>

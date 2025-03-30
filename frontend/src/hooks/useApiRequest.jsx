@@ -26,6 +26,7 @@ const useApiRequest = (url) => {
                 {
                     method: 'POST',
                     headers: {
+                        'Authorization': `Bearer ${sessionStorage.getItem('authorization_token')}`,
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(body)

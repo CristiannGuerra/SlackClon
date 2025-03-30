@@ -7,11 +7,11 @@ import { sendMessageToChannelController, getMessagesController } from "../contro
 const channelRouter = Router()
 
 // Routes for channels
-channelRouter.post("/:workspace_id", authMiddleware, createChannelController)
-channelRouter.get("/:workspace_id", authMiddleware, getChannelsController)
+channelRouter.post("/:workspace_id/channels", authMiddleware, createChannelController)
+channelRouter.get("/:workspace_id/channels", authMiddleware, getChannelsController)
 
 // Routes for messages
-channelRouter.post("/:channel_id/message", authMiddleware, sendMessageToChannelController)
-channelRouter.get("/:channel_id/message", authMiddleware, getMessagesController)
+channelRouter.post("/:channel_id/messages", authMiddleware, sendMessageToChannelController)
+channelRouter.get("/:channel_id/messages", authMiddleware, getMessagesController)
 
 export default channelRouter

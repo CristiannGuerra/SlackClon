@@ -10,6 +10,8 @@ import WorkspaceItem from "./WorkspaceItem/WorkspaceItem";
 import Toolbar from "./Toolbar/Toolbar"
 import Navbar from "./Navbar/Navbar";
 import DropdownItem from "./DropdownItem/DropdownItem";
+import MessageList from "./MessageList/MessageList";
+import MessageInput from "./MessageInput/MessageInput";
 
 
 export {
@@ -24,5 +26,7 @@ export {
     WorkspaceItem,
     Toolbar,
     Navbar,
-    DropdownItem
+    DropdownItem,
+    MessageList,
+    MessageInput
 }

@@ -4,7 +4,7 @@ import ENVIROMENT from '../../config/enviroment.config'
 import { useParams } from 'react-router-dom'
 import { useForm } from '../../hooks'
 
-const MessageInput = ({ onMessageSent }) => {
+const MessageInput = ({ onMessageSent, channel_name }) => {
     const { channel_id } = useParams();
 
     // // Initial State Form
@@ -13,12 +13,12 @@ const MessageInput = ({ onMessageSent }) => {
     }
 
     // Custom Hook Form
-    const { formState, handleInput } = useForm(formInitialState)
+    const { formState, handleInput, resetFormState } = useForm(formInitialState)
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
         try {
             const response = await fetch(
                 ENVIROMENT.URL_API + `/api/channel/${channel_id}/messages`,
@@ -32,8 +32,8 @@ const MessageInput = ({ onMessageSent }) => {
                 });
 
             if (response.ok) {
-                
                 onMessageSent(); // Actualizar la lista de mensajes
+                resetFormState()                
             }
         } catch (error) {
             console.error('Error sending message:', error);
@@ -45,7 +45,7 @@ const MessageInput = ({ onMessageSent }) => {
         <form method="post" onSubmit={handleSubmit}>
             <label hidden htmlFor="message"></label>
             <div className='workspace-message-area-message-input-tools' >tool 1</div>
-            <textarea value={formState.message} onChange={handleInput} placeholder='Mensaje a #general' name="message" id="message" className='workspace-message-area-message-input'></textarea>
+            <textarea value={formState.message} onChange={handleInput} placeholder={`Mensaje a #${channel_name}`} name="message" id="message" className='workspace-message-area-message-input'></textarea>
             <button type="submit">Send</button>
         </form>
     )

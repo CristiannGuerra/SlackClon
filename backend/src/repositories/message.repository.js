@@ -36,7 +36,7 @@ class MessageRepository {
     }
 
     async getMessagesByChannelId(channel_id) {
-        const messages_list = await Message.find({ [MESSAGE_PROPS.CHANNEL_REF]: channel_id })
+        const messages_list = await Message.find({ [MESSAGE_PROPS.CHANNEL_REF]: channel_id }).populate('sender', 'username').populate('channel_ref', 'name' )
 
         return messages_list
     }

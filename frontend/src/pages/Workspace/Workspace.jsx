@@ -81,8 +81,6 @@ const Workspace = () => {
         fetchWorkspace()
     }, [])
 
-    console.log(apiResponse)
-
     // Channels
     const channelsJsx = apiResponse.data?.payload.workspace.channels.map((channel, index) => {
         return (
@@ -106,7 +104,7 @@ const Workspace = () => {
                 <Navbar />
                 <div className='workspace-sidebar'>
                     <div className='workspace-sidebar-header'>
-                        <div className='workspace-sidebar-header-name'>Workspace name</div>
+                        <div className='workspace-sidebar-header-name'>{apiResponse.data?.payload.workspace.name}</div>
                         <IoCreateOutline className='workspace-sidebar-header-icon' />
                     </div>
                     <div className='workspace-sidebar-actions' >
@@ -142,27 +140,6 @@ const Workspace = () => {
                     </div>
                 </div>
                 <Channel />
-                {/* Messages Area */}
-                {/* <div className='workspace-message-area'>
-                    <div className='workspace-message-area-header'>
-                        <div className='workspace-message-area-header-channel'>
-                            <div className='workspace-message-area-header-channel-name'># general</div>
-                            <div className='workspace-message-area-header-channel-info'>
-                                <div className='workspace-message-area-header-channel-members'>Members</div>
-                            </div>
-                        </div>
-                        <div className='workspace-message-area-header-actions' >
-                            <div>Mensajes</div>
-                            <div>Agregar canvas</div>
-                            <div>Marcadores</div>
-                            <div>Archivos</div>
-                        </div>
-                    </div> */}
-                {/* MessageList */}
-                {/* <MessageList /> */}
-                {/* New Message Input */}
-                {/* <MessageInput /> */}
-                {/* </div> */}
             </div>
         </div>
     )

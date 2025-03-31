@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Workspace.css'
 import { useParams } from 'react-router-dom'
 import ENVIROMENT from './../../config/enviroment.config';
-import { Toolbar, Navbar, DropdownItem, MessageList, MessageInput } from '../../components';
+import { Toolbar, Navbar, DropdownItem, MessageList, MessageInput, Channel } from '../../components';
 import { IoCreateOutline } from "react-icons/io5";
 import { PiChatCircleTextLight } from "react-icons/pi";
 import { MdOutlineHeadset } from "react-icons/md";
@@ -81,6 +81,7 @@ const Workspace = () => {
         fetchWorkspace()
     }, [])
 
+    console.log(apiResponse)
 
     // Channels
     const channelsJsx = apiResponse.data?.payload.workspace.channels.map((channel, index) => {
@@ -140,8 +141,9 @@ const Workspace = () => {
                         </div>
                     </div>
                 </div>
+                <Channel />
                 {/* Messages Area */}
-                <div className='workspace-message-area'>
+                {/* <div className='workspace-message-area'>
                     <div className='workspace-message-area-header'>
                         <div className='workspace-message-area-header-channel'>
                             <div className='workspace-message-area-header-channel-name'># general</div>
@@ -155,12 +157,12 @@ const Workspace = () => {
                             <div>Marcadores</div>
                             <div>Archivos</div>
                         </div>
-                    </div>
-                    {/* MessageList */}
-                    <MessageList />
-                    {/* New Message Input */}
-                    <MessageInput />
-                </div>
+                    </div> */}
+                {/* MessageList */}
+                {/* <MessageList /> */}
+                {/* New Message Input */}
+                {/* <MessageInput /> */}
+                {/* </div> */}
             </div>
         </div>
     )

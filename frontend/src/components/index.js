@@ -12,6 +12,7 @@ import Navbar from "./Navbar/Navbar";
 import DropdownItem from "./DropdownItem/DropdownItem";
 import MessageList from "./MessageList/MessageList";
 import MessageInput from "./MessageInput/MessageInput";
+import Channel from "./Channel/Channel";
 
 
 export {
@@ -28,5 +29,6 @@ export {
     Navbar,
     DropdownItem,
     MessageList,
-    MessageInput
+    MessageInput,
+    Channel
 }

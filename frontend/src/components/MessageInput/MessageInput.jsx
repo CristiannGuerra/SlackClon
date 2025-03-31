@@ -1,26 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './MessageInput.css'
-import { useApiRequest, useForm } from '../../hooks'
 import ENVIROMENT from '../../config/enviroment.config'
 import { useParams } from 'react-router-dom'
+import { useForm } from '../../hooks'
 
-const MessageInput = () => {
-    const { channel_id } = useParams()
+const MessageInput = ({ onMessageSent }) => {
+    const { channel_id } = useParams();
 
+    // // Initial State Form
     const formInitialState = {
-        message: ""
+        message: ''
     }
 
+    // Custom Hook Form
     const { formState, handleInput } = useForm(formInitialState)
 
-    const { apiResponse, postRequest } = useApiRequest(ENVIROMENT.URL_API + `/api/channel/${channel_id}/messages`)
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        await postRequest(formState)
+        e.preventDefault();
+    
+        try {
+            const response = await fetch(
+                ENVIROMENT.URL_API + `/api/channel/${channel_id}/messages`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${sessionStorage.getItem('authorization_token')}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formState)
+                });
+
+            if (response.ok) {
+                
+                onMessageSent(); // Actualizar la lista de mensajes
+            }
+        } catch (error) {
+            console.error('Error sending message:', error);
+        }
     }
 
-    console.log(apiResponse)
 
     return (
         <form method="post" onSubmit={handleSubmit}>

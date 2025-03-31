@@ -12,7 +12,10 @@ const useForm = (formInitialState) => {
         })
     }
 
-    return { formState, handleInput }
+    // Reset FormState
+    const resetFormState = () => setFormState(formInitialState)
+
+    return { formState, handleInput, resetFormState }
 }
 
 export default useForm

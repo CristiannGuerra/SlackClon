@@ -16,7 +16,7 @@ const RegisterBody = () => {
     }
 
     // Custom Hook Form
-    const { formState, handleInput } = useForm(formInitialState)
+    const { formState, handleInput, resetFormState } = useForm(formInitialState)
 
     // Custom Hook API Request
     const { apiResponse, postRequest } = useApiRequest(ENVIROMENT.URL_API + '/api/auth/register')
@@ -27,6 +27,10 @@ const RegisterBody = () => {
         await postRequest(formState)
     }
 
+    if (apiResponse.data) {
+        resetFormState()
+        window.location.href = '/login';
+    }
 
 
     return (

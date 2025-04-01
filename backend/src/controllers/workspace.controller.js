@@ -27,7 +27,7 @@ const createWorkspaceController = async (req, res) => {
             status: 200,
             ok: true,
             payload: {
-                channel: create_channel
+                workspace: workspace_created
             }
         })
 

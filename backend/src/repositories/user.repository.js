@@ -61,7 +61,14 @@ class UserRepository {
         user_found.password = newPassword
         await user_found.save()
     }
-        
+
+    async findUserById(_id) {
+        const user_found = await User.findById(_id)
+        if (!user_found) {
+            throw new ServerError("User not found", 404)
+        }
+        return user_found
+    }        
 }
 
 export default new UserRepository()

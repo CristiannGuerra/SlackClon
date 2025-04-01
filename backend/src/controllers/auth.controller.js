@@ -304,10 +304,56 @@ const rewritePasswordController = async (req, res) => {
             status: 500,
             ok: false,
         })
-
     }
+}
 
+const getUserController = async (req, res) => {
+    try {
+        // Get data from request
+        const { _id } = req.user
+
+        // Validate data
+        if (!_id) {
+            throw new ServerError("User id is required", 400)
+        }
+
+        // Find user
+        const user_found = await UserRepository.findUserById(_id)
+
+        // Response
+        return res.send({
+            message: "User found successfully",
+            status: 200,
+            ok: true,
+            payload: {
+                user: user_found
+            }
+        })
+
+    } catch (error) {
+        // If error has a status, return it
+        if (error.status) {
+            return res.status(error.status).send({
+                message: error.message,
+                status: error.status,
+                ok: false
+            })
+        }
+        // If error doesn't have a status, return 500
+        return res.send({
+            message: error.message,
+            status: 500,
+            ok: false,
+        })
+    }
 }
 
 
-export { createNewUserController, verifyEmailController, loginController, resetPasswordController, rewritePasswordController }
+export {
+    createNewUserController,
+    verifyEmailController,
+    loginController,
+    resetPasswordController,
+    rewritePasswordController,
+    getUserController
+}

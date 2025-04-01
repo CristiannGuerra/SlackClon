@@ -11,12 +11,20 @@ const app = express()
 
 // Middlewares
 // Use CORS
-app.use(cors())
+// app.use(cors())
 
 // app.use(cors(
 //     {
 //         origin: ENVIRONMENT.URL_FRONTEND,}
 // ))
+
+app.use(
+    cors({
+      origin: ["https://slack-clon-omega.vercel.app", "http://localhost:5173"], // URLs permitidas
+      methods: ["GET", "POST", "PUT", "DELETE"],
+    })
+  );
+  
 
 // Use JSON
 app.use(express.json(

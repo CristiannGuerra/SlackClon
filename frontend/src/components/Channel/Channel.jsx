@@ -3,6 +3,7 @@ import MessageList from '../MessageList/MessageList'
 import MessageInput from '../MessageInput/MessageInput'
 import { useParams } from 'react-router-dom';
 import ENVIROMENT from '../../config/enviroment.config';
+import './Channel.css'
 
 const Channel = () => {
     const [messages, setMessages] = useState([]);
@@ -68,7 +69,7 @@ const Channel = () => {
                         {channelInfo ? `# ${channelInfo.name}` : 'Cargando...'}
                     </div>
                     <div className='workspace-message-area-header-channel-info'>
-                        <div className='workspace-message-area-header-channel-members'>Members</div>
+                        <div className='workspace-message-area-header-channel-members'>Miembros</div>
                     </div>
                 </div>
                 <div className='workspace-message-area-header-actions' >

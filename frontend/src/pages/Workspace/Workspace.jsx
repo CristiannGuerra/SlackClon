@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Workspace.css'
 import { useParams } from 'react-router-dom'
 import ENVIROMENT from './../../config/enviroment.config';
-import { Toolbar, Navbar, DropdownItem, MessageList, MessageInput, Channel } from '../../components';
+import { Toolbar, Navbar, DropdownItem, Channel } from '../../components';
 import { IoCreateOutline } from "react-icons/io5";
 import { PiChatCircleTextLight } from "react-icons/pi";
 import { MdOutlineHeadset } from "react-icons/md";
@@ -110,11 +110,11 @@ const Workspace = () => {
                     <div className='workspace-sidebar-actions' >
                         <div className='workspace-sidebar-action'>
                             <PiChatCircleTextLight className='workspace-sidebar-action-icon' />
-                            <div>Hilos de tus conversaciones</div>
+                            <div className='workspace-sidebar-action-text'>Hilos de tus conversaciones</div>
                         </div>
                         <div className='workspace-sidebar-action'>
                             <MdOutlineHeadset className='workspace-sidebar-action-icon' />
-                            <div>Juntas</div>
+                            <div className='workspace-sidebar-action-text'>Juntas</div>
                         </div>
                     </div>
                     {/* Channels */}

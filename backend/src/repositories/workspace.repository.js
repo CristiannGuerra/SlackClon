@@ -15,13 +15,16 @@ class WorkspaceRepository {
 
     async createWorkspace({ name, owner_id }) {
         try {
-            Workspace.create(
+            const workspace_created = await Workspace.create(
                 {
                     [WORKSPACE_PROPS.NAME]: name,
                     [WORKSPACE_PROPS.OWNER]: owner_id,
                     [WORKSPACE_PROPS.MEMBERS]: [owner_id]
                 }
             )
+
+            return workspace_created
+
         } catch (error) {
             throw error
         }
@@ -65,7 +68,7 @@ class WorkspaceRepository {
     }
 
     async addChannelToWorkspace({ workspace_id, channel_id }) {
-        
+
         return await Workspace.findByIdAndUpdate(workspace_id,
             { $push: { [WORKSPACE_PROPS.CHANNELS]: channel_id } },
             { new: true })

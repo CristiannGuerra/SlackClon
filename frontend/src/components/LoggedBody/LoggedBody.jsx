@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './LoggedBody.css'
 import ENVIROMENT from '../../config/enviroment.config';
 import WorkspaceItem from '../WorkspaceItem/WorkspaceItem';
+import { Link } from 'react-router-dom';
 
 
 
@@ -83,7 +84,15 @@ const LoggedBody = () => {
             <div className='workspace-list'>
                 {workspaceJsx}
             </div>
-            <div className='create-workspace-section'></div>
+            <div className='create-workspace-section'>
+                <div className='create-workspace'>
+                    <img className='create-workspace-img' src="https://a.slack-edge.com/bv1-13/get-started-workspaces-icon-88e0cb1.svg" alt="" />
+                    <div className='create-workspace-text'>¿Quieres usar Slack con otro equipo?</div>
+                </div>
+                <div className='create-workspace-button-container'>
+                    <Link className='create-workspace-button' to="/create-workspace">Crear otro espacio de trabajo</Link>
+                </div>
+            </div>
         </div>
     )
 }

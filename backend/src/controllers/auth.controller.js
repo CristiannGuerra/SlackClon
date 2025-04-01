@@ -5,6 +5,8 @@ import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import sendMail from "../utils/mailer.utils.js"
 import { isValidEmail } from "../utils/validate.utils.js"
+import workspaceRepository from './../repositories/workspace.repository.js';
+import channelRepository from "../repositories/channel.repository.js"
 
 const createNewUserController = async (req, res) => {
     try {
@@ -36,9 +38,15 @@ const createNewUserController = async (req, res) => {
             { expiresIn: "24h" } // Options => Expires in 24 hours
         )
 
-        // Create user
-        await UserRepository.create({ username, email, password: passwordHash, verification_token })
+        // Create User
+        const user_created = await UserRepository.create({ username, email, password: passwordHash, verification_token })
 
+        // Create Workspace
+        const workspace_name = `${username}'s Workspace`
+        const workspace_created = await workspaceRepository.createWorkspace({ name: workspace_name, owner_id: user_created._id })
+
+        // Create Channel
+        const create_channel = await channelRepository.createChannel({ name: "general", workspace_id: workspace_created._id, member_id: user_created._id })
 
         // Send verification email
         await sendMail({

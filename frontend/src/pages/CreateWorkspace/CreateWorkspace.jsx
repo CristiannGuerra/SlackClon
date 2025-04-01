@@ -1,16 +1,15 @@
 import React from 'react'
-import './MessageInput.css'
-import ENVIROMENT from '../../config/enviroment.config'
-import { useParams } from 'react-router-dom'
 import { useForm } from '../../hooks'
+import ENVIROMENT from '../../config/enviroment.config'
 
-const MessageInput = ({ onMessageSent, channel_name }) => {
-    const { channel_id } = useParams();
+const CreateWorkspace = () => {
+
 
     // Initial State Form
     const formInitialState = {
-        message: ''
+        name: ''
     }
+
 
     // Custom Hook Form
     const { formState, handleInput, resetFormState } = useForm(formInitialState)
@@ -21,7 +20,7 @@ const MessageInput = ({ onMessageSent, channel_name }) => {
 
         try {
             const response = await fetch(
-                ENVIROMENT.URL_API + `/api/channel/${channel_id}/messages`,
+                ENVIROMENT.URL_API + `/api/workspace/`,
                 {
                     method: 'POST',
                     headers: {
@@ -32,8 +31,7 @@ const MessageInput = ({ onMessageSent, channel_name }) => {
                 });
 
             if (response.ok) {
-                onMessageSent(); // Actualizar la lista de mensajes
-                resetFormState()                
+                resetFormState()
             }
         } catch (error) {
             console.error('Error sending message:', error);
@@ -43,12 +41,12 @@ const MessageInput = ({ onMessageSent, channel_name }) => {
 
     return (
         <form method="post" onSubmit={handleSubmit}>
-            <label hidden htmlFor="message"></label>
+            <label hidden htmlFor="name"></label>
             <div className='workspace-message-area-message-input-tools' >tool 1</div>
-            <textarea value={formState.message} onChange={handleInput} placeholder={`Mensaje a #${channel_name}`} name="message" id="message" className='workspace-message-area-message-input'></textarea>
+            <input value={formState.name} onChange={handleInput} placeholder="Workspace Name" name="name" id="name" className='workspace-message-area-message-input' />
             <button type="submit">Send</button>
         </form>
     )
 }
 
-export default MessageInput
+export default CreateWorkspace

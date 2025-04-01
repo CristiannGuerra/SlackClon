@@ -5,6 +5,16 @@ import ResetPasswordScreen from "./ResetPasswordScreen/ResetPasswordScreen.jsx"
 import RewritePasswordScreen from "./RewritePasswordScreen/RewritePasswordScreen.jsx"
 import LoggedScreen from "./LoggedScreen/LoggedScreen.jsx"
 import Workspace from "./Workspace/Workspace.jsx"
+import CreateWorkspace from "./CreateWorkspace/CreateWorkspace.jsx"
 
 
-export { HomeScreen, RegisterScreen, LoginScreen, ResetPasswordScreen, RewritePasswordScreen, LoggedScreen, Workspace }
+export {
+    HomeScreen,
+    RegisterScreen,
+    LoginScreen,
+    ResetPasswordScreen,
+    RewritePasswordScreen,
+    LoggedScreen,
+    Workspace,
+    CreateWorkspace
+}

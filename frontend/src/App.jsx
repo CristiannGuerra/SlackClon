@@ -1,8 +1,8 @@
 import React from 'react'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import { HomeScreen, LoggedScreen, LoginScreen, RegisterScreen, ResetPasswordScreen, RewritePasswordScreen, Workspace } from './pages'
-import { MessageList, ProtectedRoute } from './components'
+import { CreateWorkspace, HomeScreen, LoggedScreen, LoginScreen, RegisterScreen, ResetPasswordScreen, RewritePasswordScreen, Workspace } from './pages'
+import { ProtectedRoute } from './components'
 
 function App() {
 
@@ -13,7 +13,7 @@ function App() {
         <Route path='/login-success' element={<LoggedScreen />} />
         <Route path='/workspace/:workspace_id' element={<Workspace />} />
         <Route path='/workspace/:workspace_id/channel/:channel_id' element={<Workspace/>} />
-
+        <Route path='/create-workspace' element={<CreateWorkspace />} />
       </Route>
       <Route path='/register' element={<RegisterScreen />} />
       <Route path='/login' element={<LoginScreen />} />

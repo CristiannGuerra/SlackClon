@@ -66,7 +66,7 @@ const Channel = () => {
             <div className='workspace-message-area-header'>
                 <div className='workspace-message-area-header-channel'>
                     <div className='workspace-message-area-header-channel-name'>
-                        {channelInfo ? `# ${channelInfo.name}` : 'Cargando...'}
+                        {channelInfo ? `# ${channelInfo.name}` : ''}
                     </div>
                     <div className='workspace-message-area-header-channel-info'>
                         <div className='workspace-message-area-header-channel-members'>Miembros</div>

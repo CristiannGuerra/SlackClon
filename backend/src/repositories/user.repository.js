@@ -7,12 +7,15 @@ class UserRepository {
 
     async create({ username, email, password, verification_token }) {
         try {
-            await User.create({
+            const user_created = await User.create({
                 [USER_PROPS.USERNAME]: username,
                 [USER_PROPS.EMAIL]: email,
                 [USER_PROPS.PASSWORD]: password,
                 [USER_PROPS.VERIFICATION_TOKEN]: verification_token
             })
+
+            return user_created
+
         } catch (error) {
             if (error.code === 11000) {
                 if (error.keyPattern.email) {

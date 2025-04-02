@@ -87,9 +87,7 @@ const Channel = () => {
                     </div>
                 </div>
             </div>
-            {/* MessageList */}
             <MessageList messages={messages} />
-            {/* New Message Input */}
             {channelInfo && (
                 <MessageInput channel_name={channelInfo.name} onMessageSent={fetchChannelData} />
             )}

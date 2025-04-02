@@ -52,31 +52,30 @@ const Navbar = () => {
                     <div className='navbar-icon-container'>
                         <FaRedditSquare className='navbar-icon' />
                     </div>
-                    <span className='navbar-icon-text'>Inicio</span>
                 </button>
                 <button className='navbar-icon-button' type="button">
                     <div className='navbar-icon-container'>
                         <RiHome2Fill className='navbar-icon' />
                     </div>
-                    <span className='navbar-icon-text'>Inicio</span>
+                    <span className='navbar-icon-text'>Home</span>
                 </button>
                 <button className='navbar-icon-button' type="button">
                     <div className='navbar-icon-container'>
                         <TbBrandWechat className='navbar-icon' />
                     </div>
-                    <span className='navbar-icon-text'>Mensajes directos</span>
+                    <span className='navbar-icon-text'>DMs</span>
                 </button>
                 <button className='navbar-icon-button' type="button">
                     <div className='navbar-icon-container'>
                         <HiOutlineBell className='navbar-icon' />
                     </div>
-                    <span className='navbar-icon-text'>Actividad</span>
+                    <span className='navbar-icon-text'>Activity</span>
                 </button>
                 <button className='navbar-icon-button' type="button">
                     <div className='navbar-icon-container'>
                         <BsThreeDots className='navbar-icon' />
                     </div>
-                    <span className='navbar-icon-text'>Mas</span>
+                    <span className='navbar-icon-text'>More</span>
                 </button>
             </div>
             <div className='navbar-icons'>

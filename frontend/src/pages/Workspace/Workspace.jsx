@@ -109,18 +109,18 @@ const Workspace = () => {
                     <div className='workspace-sidebar-actions' >
                         <div className='workspace-sidebar-action'>
                             <PiChatCircleTextLight className='workspace-sidebar-action-icon' />
-                            <div className='workspace-sidebar-action-text'>Hilos de tus conversaciones</div>
+                            <div className='workspace-sidebar-action-text'>Threads</div>
                         </div>
                         <div className='workspace-sidebar-action'>
                             <MdOutlineHeadset className='workspace-sidebar-action-icon' />
-                            <div className='workspace-sidebar-action-text'>Juntas</div>
+                            <div className='workspace-sidebar-action-text'>Huddles</div>
                         </div>
                     </div>
                     {/* Channels */}
                     <div className='workspace-sidebar-channels-list'>
                         <button className='dropdown-menu-button' type="button">
                             <IoMdArrowDropdown className='dropdown-menu-button-icon' />
-                            <div className='dropdown-menu-button-text'>Canales</div>
+                            <div className='dropdown-menu-button-text'>Channels</div>
                         </button>
                         <div className='dropdown-menu'>
                             <ul className='dropdown-menu-list' >
@@ -129,7 +129,7 @@ const Workspace = () => {
                         </div>
                         <button className='dropdown-menu-button' type="button">
                             <IoMdArrowDropdown className='dropdown-menu-button-icon' />
-                            <div className='dropdown-menu-button-text'>Miembros</div>
+                            <div className='dropdown-menu-button-text'>Members</div>
                         </button>
                         <div className='dropdown-menu'>
                             <ul className='dropdown-menu-list' >

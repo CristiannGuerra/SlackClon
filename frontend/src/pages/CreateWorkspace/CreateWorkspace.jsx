@@ -59,28 +59,28 @@ const CreateWorkspace = () => {
                         <div className='workspace-sidebar-actions' >
                             <div className='workspace-sidebar-action'>
                                 <PiChatCircleTextLight className='workspace-sidebar-action-icon' />
-                                <div className='workspace-sidebar-action-text'>Hilos de tus conversaciones</div>
+                                <div className='workspace-sidebar-action-text'>Threads</div>
                             </div>
                             <div className='workspace-sidebar-action'>
                                 <MdOutlineHeadset className='workspace-sidebar-action-icon' />
-                                <div className='workspace-sidebar-action-text'>Juntas</div>
+                                <div className='workspace-sidebar-action-text'>Huddles</div>
                             </div>
                         </div>
                     </div>
                     <div className='create-workspace-area' >
                         <div className='create-workspace-area-container'>
-                            <h1 className='create-workspace-area-title'>Como se llama tu empresa o Equipo?</h1>
-                            <span className='create-workspace-area-description'>Este sera el nombre de tu espacio de trabajo de Slack: elige algo que tu equipo pueda reconocer.</span>
+                            <h1 className='create-workspace-area-title'>What’s the name of your company or team?</h1>
+                            <span className='create-workspace-area-description'>This will be the name of your Slack workspace – choose something that your team will recognise.</span>
                             <form method="post" onSubmit={handleSubmit} className='create-workspace-area-form'>
                                 <label hidden htmlFor="name"></label>
                                 <input
                                     className='create-workspace-area-form-input'
                                     value={formState.name}
                                     onChange={handleInput}
-                                    placeholder="P. ej.: Empresa 123 o Ficciones S. A."
+                                    placeholder="New Workspace"
                                     name="name"
                                     id="name" />
-                                <button className='create-workspace-area-form-button' type="submit">Finalizar</button>
+                                <button className='create-workspace-area-form-button' type="submit">Create</button>
                             </form>
                         </div>
                     </div>

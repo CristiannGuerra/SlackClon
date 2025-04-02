@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { use, useEffect, useRef } from 'react'
 import './MessageList.css'
 import Message from '../Message/Message'
 
 const MessageList = ({ messages }) => {
-    console.log(messages)
+    const messagesEndRef = useRef(null)
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }
+
+    useEffect(() => {
+        scrollToBottom()
+    }, [messages])
 
     // Crear Componente Message
     const MessageJsx = messages.map((message, index) => {
@@ -21,6 +29,7 @@ const MessageList = ({ messages }) => {
     return (
         <div className='workspace-message-area-message-list'>
             {MessageJsx}
+            <div ref={messagesEndRef} />
         </div>
     )
 }

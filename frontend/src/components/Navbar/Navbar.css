@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0px;
+    padding: 10px 0px;
 }
 
 .navbar-icons {
@@ -45,7 +45,7 @@
 .navbar-icon {
     fill: var(--brand-core-white);
     color: var(--brand-core-white);
-    stroke: var(--brand-core-white);
+    stroke: var(--brand-core-white); 
     font-size: 20px;
 }
 

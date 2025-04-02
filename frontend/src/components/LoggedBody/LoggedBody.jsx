@@ -87,10 +87,10 @@ const LoggedBody = () => {
             <div className='create-workspace-section'>
                 <div className='create-workspace'>
                     <img className='create-workspace-img' src="https://a.slack-edge.com/bv1-13/get-started-workspaces-icon-88e0cb1.svg" alt="" />
-                    <div className='create-workspace-text'>¿Quieres usar Slack con otro equipo?</div>
+                    <div className='create-workspace-text'>Want to use Slack with a different team?</div>
                 </div>
                 <div className='create-workspace-button-container'>
-                    <Link className='create-workspace-button' to="/create-workspace">Crear otro espacio de trabajo</Link>
+                    <Link className='create-workspace-button' to="/create-workspace">Create another workspace</Link>
                 </div>
             </div>
         </div>

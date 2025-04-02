@@ -1,0 +1,46 @@
+.workspace-message-area-message {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 20px 20px;
+    border-bottom: 1px solid var(--brand-core-border);
+    border-top: 1px solid var(--brand-core-border);
+}
+
+.workspace-message-area-message-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.workspace-message-area-message-info-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.workspace-message-area-message-info-header-name,
+.workspace-message-area-message-info-header-time,
+.workspace-message-area-message-info-content {
+    color: var(--brand-core-white);
+}
+
+.workspace-message-area-message-info-header-name {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.workspace-message-area-message-info-header-time {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.workspace-message-area-message-info-content {
+    font-size: 14px;
+    font-weight: 400;
+}

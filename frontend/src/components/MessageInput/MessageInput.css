@@ -1,22 +1,29 @@
+.workspace-message-area-message-input-form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 0px 20px 10px 20px;
+    background-color: var(--brand-core-dark-gray);
+}
+
 .workspace-message-area-message-input {
     width: 100%;
     height: 120px;
     background-color: var(--brand-core-lighter-input);
     resize: none;
     border-radius: 12px;
-    padding: 12px;
-    color: var(--brand-core-white); 
-}
-
-.workspace-message-area-message-input-form{
-    display: flex;
-    flex-direction: column;
-    position: relative;
+    padding: 10px 10px 0px 10px;
+    color: var(--brand-core-white);
 }
 
 .workspace-message-area-message-input-button {
     position: absolute;
-    right: 0px;
-    bottom: 0px;
-
+    right: 20px;
+    bottom: 10px;
+    border-bottom-right-radius: 8px;
+    padding: 8px;
+    background-color: var(--brand-core-aubergine);
+    color: var(--brand-core-white);
+    border: none;
+    cursor: pointer;
 }

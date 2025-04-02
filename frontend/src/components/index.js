@@ -13,6 +13,7 @@ import DropdownItem from "./DropdownItem/DropdownItem";
 import MessageList from "./MessageList/MessageList";
 import MessageInput from "./MessageInput/MessageInput";
 import Channel from "./Channel/Channel";
+import Message from "./Message/Message";
 
 
 export {
@@ -30,5 +31,6 @@ export {
     DropdownItem,
     MessageList,
     MessageInput,
-    Channel
+    Channel,
+    Message
 }

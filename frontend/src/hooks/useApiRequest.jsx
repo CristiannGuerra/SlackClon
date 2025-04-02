@@ -45,10 +45,10 @@ const useApiRequest = (url) => {
 
         } catch (error) {
             setApiResponse((prevState) => {
-                if (error.status) {
+                if (typeof error == typeof ServerError) {
                     return { ...prevState, error: error.message }
                 } else {
-                    return { ...prevState, error: 'Something went wrong' }
+                    return { ...prevState, error: error.message }
                 }
             })
 

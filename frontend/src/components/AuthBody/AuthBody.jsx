@@ -34,6 +34,8 @@ const AuthBody = () => {
     await postRequest(formState)
   }
 
+  console.log(apiResponse)
+
   return (
     <div className='auth-body'>
       <div className='auth-body-title'>
@@ -54,6 +56,7 @@ const AuthBody = () => {
         <input className='auth-body-form-input' type="email" name='email' id='email' placeholder='name@work-email.com' value={formState.email} onChange={handleInput} required />
         <label hidden htmlFor="password"></label>
         <input className='auth-body-form-input' type="password" name='password' id='password' placeholder='password' value={formState.password} onChange={handleInput} required />
+        {!apiResponse.ok && <span className='auth-body-form-error'>{apiResponse.error}</span>}
         <OnboardingButton text={"Sign In With Email"} isfilled={true} />
       </form>
       <div className='auth-body-signin-manual' >

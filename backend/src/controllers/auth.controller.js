@@ -197,17 +197,13 @@ const loginController = async (req, res) => {
                 ok: false
             })
         }
-        // Log error for debugging
-        console.log(error)
         // If error doesn't have a status, return 500
         return res.send({
             message: error.message,
             status: 500,
             ok: false
         })
-
     }
-
 }
 
 

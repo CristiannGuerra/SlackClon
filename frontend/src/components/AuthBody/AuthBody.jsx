@@ -53,7 +53,7 @@ const AuthBody = () => {
         <label hidden htmlFor="email"></label>
         <input className='auth-body-form-input' type="email" name='email' id='email' placeholder='name@work-email.com' value={formState.email} onChange={handleInput} required />
         <label hidden htmlFor="password"></label>
-        <input className='auth-body-form-input' type="text" name='password' id='password' placeholder='password' value={formState.password} onChange={handleInput} required />
+        <input className='auth-body-form-input' type="password" name='password' id='password' placeholder='password' value={formState.password} onChange={handleInput} required />
         <OnboardingButton text={"Sign In With Email"} isfilled={true} />
       </form>
       <div className='auth-body-signin-manual' >

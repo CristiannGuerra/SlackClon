@@ -42,11 +42,11 @@ const MessageInput = ({ onMessageSent, channel_name }) => {
 
 
     return (
-        <form method="post" onSubmit={handleSubmit}>
+        <form method="post" onSubmit={handleSubmit} className='workspace-message-area-message-input-form'>
             <label hidden htmlFor="message"></label>
             <div className='workspace-message-area-message-input-tools' >tool 1</div>
             <textarea value={formState.message} onChange={handleInput} placeholder={`Mensaje a #${channel_name}`} name="message" id="message" className='workspace-message-area-message-input'></textarea>
-            <button type="submit">Send</button>
+            <button className='workspace-message-area-message-input-button' type="submit">Send</button>
         </form>
     )
 }

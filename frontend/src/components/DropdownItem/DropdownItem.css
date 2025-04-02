@@ -3,13 +3,21 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
+    padding: 4px 12px;
+}
+
+.dropdown-menu-list-item:hover {
+    background-color: var(--brand-core-light-aubergine);
+    border-radius: 3px;
+    cursor: pointer;
 }
 
 .dropdown-menu-list-item-icon {
     width: 20px;
     height: 20px;
     font-size: 16px;
+    fill: var(--brand-core-lighter-aubergine);
 }
 
 .dropdown-menu-list-item-name {
@@ -18,4 +26,5 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    color: var(--brand-core-lighter-aubergine);
 }

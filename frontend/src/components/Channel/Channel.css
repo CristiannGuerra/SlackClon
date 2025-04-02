@@ -3,15 +3,22 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    padding: 0px 12px 0px 20px;
+    background-color: var(--brand-core-dark-gray);
 }
 
 .workspace-message-area-header {
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0px 12px 0px 20px;
     border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--brand-core-border);
+}
 
+.workspace-message-area-header-channel-name {
+    color: var(--brand-core-lighter-pink);
+    font-size: 18px;
+    font-weight: 900;
 }
 
 .workspace-message-area-header-channel {
@@ -21,6 +28,14 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+.workspace-message-area-header-channel-members {
+    color: var(--brand-core-lighter-pink);
+}
+
+.workspace-message-area-header-actions-button-text {
+    color: var(--brand-core-lighter-pink);
 }
 
 .workspace-message-area-header-actions {
@@ -36,11 +51,9 @@
 }
 
 .workspace-message-area-message-list {
-    width: 100%;
+    flex: 1;
     height: 100%;
-}
-
-.workspace-message-area-message-input {
-    width: 100%;
-    height: 120px;
+    overflow-y: auto;
+    padding: 0px 12px 0px 20px;
+    color: var(--brand-core-white);
 }

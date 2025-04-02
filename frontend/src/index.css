@@ -14,15 +14,18 @@
     min-height: 100vh;
     --brand-core-aubergine: #431349;
     --brand-core-dark-aubergine: #221226;
-    --brand-core-dark-aubergine: #7D3986;    
+    --brand-core-light-aubergine: #7D3986;
+    --brand-core-lighter-aubergine: #E3CEEBCC;
+    --brand-core-lighter-pink: #D1D2D3;
     --brand-core-white: #fff;
     --brand-core-border: #5e5d6073;
     --brand-core-black: #1D1C1D;
     --brand-core-beige: #F9F6F1;
     --brand-core-gray: #616061;
     --brand-core-light-gray: #5e5d6073;
-    --brand-core-lighter-gray:#B9BAB8;
+    --brand-core-lighter-gray: #B9BAB8;
     --brand-core-dark-gray: #1A1D21;
     --brand-core-pink: #3A1040;
-    --brand-core-light-pink: #1F1023;    
+    --brand-core-light-pink: #1F1023;
+    --brand-core-lighter-input: #222529;
 }

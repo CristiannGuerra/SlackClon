@@ -15,8 +15,8 @@
 /* Sidebar */
 .workspace-sidebar {
     height: 100%;
-    background-color: rebeccapurple;
-    width: 300px;
+    background-color: var(--brand-core-dark-aubergine);
+    width: 400px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -30,24 +30,26 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 8px 0px 12px;
+    padding: 10px 8px 0px 12px;
     gap: 8px;
 }
 
 .workspace-sidebar-header-name {
-    width: 150px;
+    width: 200px;
     font-size: 24px;
     font-weight: 600;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     padding: 3px 8px;
+    color: var(--brand-core-lighter-aubergine)
 }
 
 .workspace-sidebar-header-icon {
-    width: 20px;
-    height: 20px;
-    font-size: 16px;
+    width: 30px;
+    height: 30px;
+    font-size: 24px;
+    fill: var(--brand-core-lighter-aubergine);
 }
 
 /* Sidebar Body */
@@ -70,9 +72,10 @@
 
 .workspace-sidebar-action-icon {
     transform: scaleX(-1);
-    font-size: 20px;
-    width: 20px;
-    height: 20px;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    fill: var(--brand-core-lighter-aubergine);
 }
 
 .workspace-sidebar-action-text {
@@ -82,6 +85,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    color: var(--brand-core-lighter-aubergine);
 }
 
 /* Sidebar Channels */
@@ -111,6 +115,7 @@
     width: 20px;
     height: 20px;
     font-size: 16px;
+    fill: var(--brand-core-lighter-aubergine);
 }
 
 .dropdown-menu-button-text {
@@ -119,7 +124,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-
+    color: var(--brand-core-lighter-aubergine);
 }
 
 /* Dropdown Menu */
@@ -133,7 +138,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between
+    justify-content: space-between;
 }
 
 /* Dropdown Button */

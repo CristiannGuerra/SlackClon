@@ -69,14 +69,22 @@ const Channel = () => {
                         {channelInfo ? `# ${channelInfo.name}` : ''}
                     </div>
                     <div className='workspace-message-area-header-channel-info'>
-                        <div className='workspace-message-area-header-channel-members'>Miembros</div>
+                        <div className='workspace-message-area-header-channel-members'>Members</div>
                     </div>
                 </div>
                 <div className='workspace-message-area-header-actions' >
-                    <div>Mensajes</div>
-                    <div>Agregar canvas</div>
-                    <div>Marcadores</div>
-                    <div>Archivos</div>
+                    <div className='workspace-message-area-header-actions-button'>
+                        <div className='workspace-message-area-header-actions-button-text'>Messages</div>
+                    </div>
+                    <div className='workspace-message-area-header-actions-button'>
+                        <div className='workspace-message-area-header-actions-button-text'>Canvas</div>
+                    </div>
+                    <div className='workspace-message-area-header-actions-button'>
+                        <div className='workspace-message-area-header-actions-button-text'>Tags</div>
+                    </div>
+                    <div className='workspace-message-area-header-actions-button'>
+                        <div className='workspace-message-area-header-actions-button-text'>Archives</div>
+                    </div>
                 </div>
             </div>
             {/* MessageList */}

@@ -9,7 +9,7 @@ import ENVIROMENT from '../../config/enviroment.config';
 import { AuthContext } from '../../Context/AuthContext';
 
 const AuthBody = () => {
-  const { login } = useContext(AuthContext)
+  const { login, identified } = useContext(AuthContext)
 
 
   const formInitialState = {
@@ -24,6 +24,7 @@ const AuthBody = () => {
   useEffect(() => {
     if (apiResponse.data) {
       login(apiResponse.data.payload.autorizathion_token)
+      identified(apiResponse.data.payload.user)
       window.location.href = '/login-success';
     }
   }, [apiResponse])

@@ -183,7 +183,8 @@ const loginController = async (req, res) => {
             status: 200,
             ok: true,
             payload: {
-                autorizathion_token
+                autorizathion_token,
+                user: user_found.id
             }
         })
 

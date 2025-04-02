@@ -9,7 +9,6 @@ import { MdOutlineHeadset } from "react-icons/md";
 import { IoMdArrowDropdown } from "react-icons/io";
 
 
-
 const Workspace = () => {
     // API Response
     const initialApiResponseState = {

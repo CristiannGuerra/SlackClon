@@ -1,22 +1,25 @@
 .workspace {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
 }
 
 .workspace-container {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 50px);
 }
 
 /* Sidebar */
 .workspace-sidebar {
     height: 100%;
     background-color: var(--brand-core-dark-aubergine);
-    width: 400px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     gap: 16px;

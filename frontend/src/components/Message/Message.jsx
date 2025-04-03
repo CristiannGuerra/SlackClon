@@ -1,6 +1,6 @@
 import React from 'react'
 import './Message.css'
-import { formato24HorasUTC } from '../../utils/formatDate.utils'
+import { formato24HorasArgentina } from '../../utils/formatDate.utils'
 
 const Message = ({ username, messageContent, messageTime, userAvatar }) => {
 
@@ -11,7 +11,7 @@ const Message = ({ username, messageContent, messageTime, userAvatar }) => {
             <div className='workspace-message-area-message-info'>
                 <div className='workspace-message-area-message-info-header'>
                     <div className='workspace-message-area-message-info-header-name'>{username}</div>
-                    <div className='workspace-message-area-message-info-header-time'>{formato24HorasUTC(messageTime)}</div>
+                    <div className='workspace-message-area-message-info-header-time'>{formato24HorasArgentina(messageTime)}</div>
                 </div>
                 <div className='workspace-message-area-message-info-content'>{messageContent}</div>
             </div>

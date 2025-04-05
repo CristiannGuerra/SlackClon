@@ -31,6 +31,9 @@ class ChannelRepository {
             // Add channel to workspace
             await workspaceRepository.addChannelToWorkspace({ workspace_id, channel_id: new_channel._id })
 
+            // Return channel
+            return new_channel
+
         } catch (error) {
             throw error
         }

@@ -12,37 +12,39 @@ import ENVIROMENT from '../../config/enviroment.config';
 
 const Navbar = () => {
 
-    // const [apiResponse, setApiResponse] = useState({ data: null })
+    const initialApiResponse = {
+        loading: false,
+        error: null,
+        data: null,
 
-    // useEffect(() => {
-    //     const fetchUserInfo = async () => {
-    //         const response = await fetch(
-    //             ENVIROMENT.URL_API + `/api/auth/me`,
-    //             {
-    //                 method: 'GET',
-    //                 headers: {
-    //                     'Authorization': `Bearer ${sessionStorage.getItem('authorization_token')}`,
-    //                     'Content-Type': 'application/json'
-    //                 }
-    //             })
+    }
 
-    //         // Response Data to JSON
-    //         const responseData = await response.json()
-
-    //         // Set API Response Data
-    //         if (responseData.ok) {
-    //             setApiResponse((prevState) => {
-    //                 return { ...prevState, data: responseData }
-    //             })
-    //         }
-    //     }
-
-    //     fetchUserInfo()
-    // }, [])
-
-    // console.log(apiResponse)
+    const [apiResponse, setApiResponse] = useState(initialApiResponse)
 
 
+    const fetchUserInfo = async () => {
+        const response = await fetch(
+            ENVIROMENT.URL_API + `/api/auth/me`,
+            {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${sessionStorage.getItem('authorization_token')}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+
+        // Response Data to JSON
+        const responseData = await response.json()
+
+        // Set API Response Data
+        if (responseData.ok) {
+            setApiResponse((prevState) => {
+                return { ...prevState, data: responseData }
+            })
+        }
+    }
+
+    console.log(`apiResponse desde navbar: ${apiResponse}`)
 
 
     return (
@@ -82,7 +84,7 @@ const Navbar = () => {
                 <div className="navbar-icon-container">
                     <FaCirclePlus className='navbar-icon' />
                 </div>
-                <div className="navbar-icon-container">
+                <div className="navbar-icon-container" onClick={fetchUserInfo}>
                     <FaRedditSquare className='navbar-icon' />
                 </div>
             </div>

@@ -3,8 +3,9 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 48px 0px 40px;
+    /* padding: 48px 0px 40px; */
     position: relative;
+    height: 88px;
     width: 100%;
 }
 

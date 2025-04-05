@@ -2,11 +2,12 @@
 .auth-body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     max-width: 800px;
     gap: 32px;
-    justify-self: start;
+    height: 100%;
+
 }
 
 /* AuthBody Title */

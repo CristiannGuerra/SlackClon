@@ -20,13 +20,16 @@ const createChannelController = async (req, res) => {
         }
 
         // Create channel
-        await channelRepository.createChannel({ name: channel_name, workspace_id, member_id })
+        const channel_created = await channelRepository.createChannel({ name: channel_name, workspace_id, member_id })
 
         // Response to client
         res.json({
             message: `Channel created successfully with name: ${channel_name}`,
             status: 200,
-            ok: true
+            ok: true,
+            payload: {
+                channel: channel_created
+            }
         })
 
 

@@ -1,0 +1,26 @@
+.workspace-sidebar-channels-list-add-channels-button {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 12px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.workspace-sidebar-channels-list-add-channels-button-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    fill: var(--brand-core-lighter-aubergine);
+}
+
+.workspace-sidebar-channels-list-add-channels-button-text {
+    color: var(--brand-core-lighter-aubergine);
+    font-size: 15px;
+    font-weight: 600;
+}

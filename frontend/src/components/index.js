@@ -14,6 +14,9 @@ import MessageList from "./MessageList/MessageList";
 import MessageInput from "./MessageInput/MessageInput";
 import Channel from "./Channel/Channel";
 import Message from "./Message/Message";
+import CreateChannelModal from "./CreateChannelModal/CreateChannelModal";
+import ChannelList from "./ChannelList/ChannelList";
+import MembersList from './MembersList/MembersList';
 
 
 export {
@@ -32,5 +35,8 @@ export {
     MessageList,
     MessageInput,
     Channel,
-    Message
+    Message,
+    CreateChannelModal,
+    ChannelList,
+    MembersList
 }

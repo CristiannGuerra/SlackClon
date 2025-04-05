@@ -11,6 +11,7 @@ function App() {
       <Route element={<ProtectedRoute />}>
         <Route path='/' element={<HomeScreen />} />
         <Route path='/login-success' element={<LoggedScreen />} />
+        <Route path='/workspaces' element={<LoggedScreen />} />
         <Route path='/workspace/:workspace_id' element={<Workspace />} />
         <Route path='/workspace/:workspace_id/channel/:channel_id' element={<Workspace/>} />
         <Route path='/create-workspace' element={<CreateWorkspace />} />

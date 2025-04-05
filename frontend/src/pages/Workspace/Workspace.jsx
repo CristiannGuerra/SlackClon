@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import './Workspace.css'
 import { useParams } from 'react-router-dom'
 import ENVIROMENT from './../../config/enviroment.config';
-import { Toolbar, Navbar, DropdownItem, Channel } from '../../components';
+import { Toolbar, Navbar, DropdownItem, Channel, ChannelList } from '../../components';
 import { IoCreateOutline } from "react-icons/io5";
 import { PiChatCircleTextLight } from "react-icons/pi";
 import { MdOutlineHeadset } from "react-icons/md";
 import { IoMdArrowDropdown } from "react-icons/io";
+import MemberListItem from '../../components/MemberListItem/MemberListItem';
 
 
 const Workspace = () => {
@@ -20,7 +21,7 @@ const Workspace = () => {
     const [apiResponse, setApiResponse] = useState(initialApiResponseState)
 
     // Tomamos el id del workspace de la url
-    const { workspace_id } = useParams()
+    const { workspace_id, channel_id } = useParams()
 
     // Fetch Workspace
     useEffect(() => {
@@ -80,66 +81,63 @@ const Workspace = () => {
         fetchWorkspace()
     }, [])
 
-    // Channels
-    const channelsJsx = apiResponse.data?.payload.workspace.channels.map((channel, index) => {
-        return (
-            <DropdownItem name={channel.name} id={channel._id} key={index} />
-        )
-    })
 
-
-    // Membres
+    // Members List
     const membersJsx = apiResponse.data?.payload.workspace.members.map((member, index) => {
         return (
-            <DropdownItem name={member.username} key={index} />
+            <MemberListItem name={member.username} id={member._id} key={index} />
         )
     })
 
 
     return (
+
         <div className='workspace'>
-            <Toolbar workspaceName={apiResponse.data?.payload.workspace.name} />
-            <div className='workspace-container'>
-                <Navbar />
-                <div className='workspace-sidebar'>
-                    <div className='workspace-sidebar-header'>
-                        <div className='workspace-sidebar-header-name'>{apiResponse.data?.payload.workspace.name}</div>
-                        <IoCreateOutline className='workspace-sidebar-header-icon' />
+
+            {/* Loader de Carga */}
+            {apiResponse.loading && <div>Loading</div>}
+
+            {/* API Response */}
+            {apiResponse.data && (
+                <>
+                    <Toolbar workspaceName={apiResponse.data?.payload.workspace.name} />
+                    <div className='workspace-container'>
+                        <Navbar />
+                        <div className='workspace-sidebar'>
+                            <div className='workspace-sidebar-header'>
+                                <div className='workspace-sidebar-header-name'>{apiResponse.data?.payload.workspace.name}</div>
+                                <IoCreateOutline className='workspace-sidebar-header-icon' />
+                            </div>
+                            <div className='workspace-sidebar-actions' >
+                                <div className='workspace-sidebar-action'>
+                                    <PiChatCircleTextLight className='workspace-sidebar-action-icon' />
+                                    <div className='workspace-sidebar-action-text'>Threads</div>
+                                </div>
+                                <div className='workspace-sidebar-action'>
+                                    <MdOutlineHeadset className='workspace-sidebar-action-icon' />
+                                    <div className='workspace-sidebar-action-text'>Huddles</div>
+                                </div>
+                            </div>
+                            <ChannelList />
+                            <div className='workspace-sidebar-channels-list'>
+                                <button className='dropdown-menu-button' type="button">
+                                    <IoMdArrowDropdown className='dropdown-menu-button-icon' />
+                                    <div className='dropdown-menu-button-text'>Members</div>
+                                </button>
+                                <div className='dropdown-menu'>
+                                    <ul className='dropdown-menu-list' >
+                                        {membersJsx}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Channel Messages */}
+                        {!channel_id
+                            ? <div className='channel-not-selected' ></div>
+                            : <Channel />}
                     </div>
-                    <div className='workspace-sidebar-actions' >
-                        <div className='workspace-sidebar-action'>
-                            <PiChatCircleTextLight className='workspace-sidebar-action-icon' />
-                            <div className='workspace-sidebar-action-text'>Threads</div>
-                        </div>
-                        <div className='workspace-sidebar-action'>
-                            <MdOutlineHeadset className='workspace-sidebar-action-icon' />
-                            <div className='workspace-sidebar-action-text'>Huddles</div>
-                        </div>
-                    </div>
-                    {/* Channels */}
-                    <div className='workspace-sidebar-channels-list'>
-                        <button className='dropdown-menu-button' type="button">
-                            <IoMdArrowDropdown className='dropdown-menu-button-icon' />
-                            <div className='dropdown-menu-button-text'>Channels</div>
-                        </button>
-                        <div className='dropdown-menu'>
-                            <ul className='dropdown-menu-list' >
-                                {channelsJsx}
-                            </ul>
-                        </div>
-                        <button className='dropdown-menu-button' type="button">
-                            <IoMdArrowDropdown className='dropdown-menu-button-icon' />
-                            <div className='dropdown-menu-button-text'>Members</div>
-                        </button>
-                        <div className='dropdown-menu'>
-                            <ul className='dropdown-menu-list' >
-                                {membersJsx}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <Channel />
-            </div>
+                </>
+            )}
         </div>
     )
 }

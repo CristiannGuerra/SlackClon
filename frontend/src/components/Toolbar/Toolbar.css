@@ -74,4 +74,5 @@
     cursor: pointer;
     font-size: 20px;
     fill: var(--brand-core-white);
+    stroke: var(--brand-core-white);
 }

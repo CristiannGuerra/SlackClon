@@ -4,6 +4,10 @@ import MessageInput from '../MessageInput/MessageInput'
 import { useParams } from 'react-router-dom';
 import ENVIROMENT from '../../config/enviroment.config';
 import './Channel.css'
+import { TbMessageCircleFilled } from "react-icons/tb";
+import { PiSticker } from "react-icons/pi";
+import { IoFolderOutline } from "react-icons/io5";
+import { BsStack } from "react-icons/bs";
 
 const Channel = () => {
     const [messages, setMessages] = useState([]);
@@ -74,16 +78,20 @@ const Channel = () => {
                 </div>
                 <div className='workspace-message-area-header-actions' >
                     <div className='workspace-message-area-header-actions-button'>
+                        <TbMessageCircleFilled className='workspace-message-area-header-actions-button-icon' />
                         <div className='workspace-message-area-header-actions-button-text'>Messages</div>
                     </div>
                     <div className='workspace-message-area-header-actions-button'>
+                        <PiSticker className='workspace-message-area-header-actions-button-icon' />
                         <div className='workspace-message-area-header-actions-button-text'>Canvas</div>
                     </div>
                     <div className='workspace-message-area-header-actions-button'>
-                        <div className='workspace-message-area-header-actions-button-text'>Tags</div>
+                        <IoFolderOutline className='workspace-message-area-header-actions-button-icon' />
+                        <div className='workspace-message-area-header-actions-button-text'>Bookmarks</div>
                     </div>
                     <div className='workspace-message-area-header-actions-button'>
-                        <div className='workspace-message-area-header-actions-button-text'>Archives</div>
+                        <BsStack className='workspace-message-area-header-actions-button-icon' />
+                        <div className='workspace-message-area-header-actions-button-text'>Files</div>
                     </div>
                 </div>
             </div>

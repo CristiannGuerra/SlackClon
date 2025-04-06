@@ -34,8 +34,6 @@ const AuthBody = () => {
     await postRequest(formState)
   }
 
-  console.log(apiResponse)
-
   return (
     <div className='auth-body'>
       <div className='auth-body-title'>

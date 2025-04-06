@@ -17,6 +17,7 @@ import Message from "./Message/Message";
 import CreateChannelModal from "./CreateChannelModal/CreateChannelModal";
 import ChannelList from "./ChannelList/ChannelList";
 import MembersList from './MembersList/MembersList';
+import UserInfo from './UserInfo/UserInfo';
 
 
 export {
@@ -38,5 +39,6 @@ export {
     Message,
     CreateChannelModal,
     ChannelList,
-    MembersList
+    MembersList,
+    UserInfo
 }

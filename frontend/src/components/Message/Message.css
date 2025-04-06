@@ -13,6 +13,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
 
 .workspace-message-area-message-info-header {

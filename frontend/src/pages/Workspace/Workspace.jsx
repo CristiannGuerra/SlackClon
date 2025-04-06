@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Workspace.css'
 import { useParams } from 'react-router-dom'
 import ENVIROMENT from './../../config/enviroment.config';
-import { Toolbar, Navbar, DropdownItem, Channel, ChannelList } from '../../components';
+import { Toolbar, Navbar, Channel, ChannelList, UserInfo } from '../../components';
 import { IoCreateOutline } from "react-icons/io5";
 import { PiChatCircleTextLight } from "react-icons/pi";
 import { MdOutlineHeadset } from "react-icons/md";
@@ -11,6 +11,14 @@ import MemberListItem from '../../components/MemberListItem/MemberListItem';
 
 
 const Workspace = () => {
+    // UserInfo Container State
+    const [isVisible, setIsVisible] = useState(false);
+
+    // Handle Profile Click
+    const handleProfileClick = () => {
+        setIsVisible(!isVisible);
+    }
+
     // API Response
     const initialApiResponseState = {
         loading: false,
@@ -102,7 +110,7 @@ const Workspace = () => {
                 <>
                     <Toolbar workspaceName={apiResponse.data?.payload.workspace.name} />
                     <div className='workspace-container'>
-                        <Navbar />
+                        <Navbar handleClick={handleProfileClick} />
                         <div className='workspace-sidebar'>
                             <div className='workspace-sidebar-header'>
                                 <div className='workspace-sidebar-header-name'>{apiResponse.data?.payload.workspace.name}</div>
@@ -135,6 +143,9 @@ const Workspace = () => {
                         {!channel_id
                             ? <div className='channel-not-selected' ></div>
                             : <Channel />}
+                        {
+                            isVisible && <UserInfo isVisible={isVisible} onClose={handleProfileClick} />
+                        }
                     </div>
                 </>
             )}

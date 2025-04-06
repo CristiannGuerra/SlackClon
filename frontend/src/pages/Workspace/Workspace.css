@@ -18,6 +18,7 @@
     flex-direction: row;
     width: 100%;
     height: calc(100% - 50px);
+    position: relative;
 }
 
 /* Sidebar */
@@ -141,7 +142,18 @@
     padding: 0px 8px 0px 12px;
     gap: 4px;
     overflow-y: auto;
-    /* scrollbar */
+}
+
+.workspace-sidebar-channels-list::-webkit-scrollbar {
+    background: transparent;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+}
+
+.workspace-sidebar-channels-list::-webkit-scrollbar-thumb {
+    background: var(--brand-core-light-aubergine);
+    border-radius: 4px;
 }
 
 /* Dropdown Button */

@@ -103,7 +103,7 @@ const Workspace = () => {
         <div className='workspace'>
 
             {/* Loader de Carga */}
-            {apiResponse.loading && <div>Loading</div>}
+            {apiResponse.loading && <div className='workspace-loader'>Loading...</div>}
 
             {/* API Response */}
             {apiResponse.data && (

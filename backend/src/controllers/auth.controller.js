@@ -62,7 +62,7 @@ const createNewUserController = async (req, res) => {
 
         // Send response
         return res.send({
-            message: "User created successfully",
+            message: "User created successfully, check your email to verify your account",
             status: 201,
             ok: true
         })

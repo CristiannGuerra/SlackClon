@@ -46,6 +46,9 @@ const RegisterBody = () => {
                 <input className='auth-body-form-input' type="email" name='email' id='email' placeholder='name@work-email.com' value={formState.email} onChange={handleInput} required />
                 <label hidden htmlFor="password"></label>
                 <input className='auth-body-form-input' type="password" name='password' id='password' placeholder='password' value={formState.password} onChange={handleInput} required />
+                {apiResponse.error && <div className='auth-body-form-error'>{apiResponse.error}</div>}
+                {apiResponse.loading && <div className='auth-body-form-loading'>Registering...</div>}
+                {apiResponse.data && <div className='auth-body-form-success'>{apiResponse.data.message}</div>}
                 <OnboardingButton text={"Continue"} isfilled={true} />
             </form>
             <div className='auth-body-divider'>

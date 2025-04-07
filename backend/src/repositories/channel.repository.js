@@ -5,7 +5,7 @@ import workspaceRepository from "./workspace.repository.js"
 class ChannelRepository {
 
     async findChannelById(channel_id) {
-        return await Channel.findById(channel_id)
+        return await Channel.findById(channel_id).populate('workspace_ref', 'members')
     }
     async createChannel({ name, workspace_id, member_id }) {
         try {

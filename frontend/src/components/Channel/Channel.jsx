@@ -64,6 +64,8 @@ const Channel = () => {
         return () => abortController.abort();
     }, [fetchChannelData])
 
+    console.log(channelInfo)
+
 
     return (
         <div className='workspace-message-area'>
@@ -73,7 +75,7 @@ const Channel = () => {
                         {channelInfo ? `# ${channelInfo.name}` : ''}
                     </div>
                     <div className='workspace-message-area-header-channel-info'>
-                        <div className='workspace-message-area-header-channel-members'>Members</div>
+                        <div className='workspace-message-area-header-channel-members'> {channelInfo ? channelInfo.workspace_ref.members.length : ''} Members</div>
                     </div>
                 </div>
                 <div className='workspace-message-area-header-actions' >

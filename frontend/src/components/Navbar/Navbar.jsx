@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import "./Navbar.css"
 import { RiHome2Fill } from "react-icons/ri";
 import { TbBrandWechat } from "react-icons/tb";
@@ -6,11 +6,11 @@ import { HiOutlineBell } from "react-icons/hi";
 import { BsThreeDots } from "react-icons/bs";
 import { FaRedditSquare } from "react-icons/fa"; // Provisorio
 import { FaCirclePlus } from "react-icons/fa6";
-import ENVIROMENT from '../../config/enviroment.config';
 
 
 
-const Navbar = ({ handleClick }) => {
+
+const Navbar = ({ handleClick}) => {
 
     return (
         <div className='navbar'>
@@ -51,6 +51,7 @@ const Navbar = ({ handleClick }) => {
                 </div>
                 <div className="navbar-icon-container" onClick={handleClick}>
                     <FaRedditSquare className='navbar-icon' />
+                    <div></div>
                 </div>
             </div>
         </div>

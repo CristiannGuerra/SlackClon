@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Workspace.css'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import ENVIROMENT from './../../config/enviroment.config';
 import { Toolbar, Navbar, Channel, ChannelList, UserInfo } from '../../components';
 import { IoCreateOutline } from "react-icons/io5";
@@ -113,7 +113,7 @@ const Workspace = () => {
                         <Navbar handleClick={handleProfileClick} />
                         <div className='workspace-sidebar'>
                             <div className='workspace-sidebar-header'>
-                                <div className='workspace-sidebar-header-name'>{apiResponse.data?.payload.workspace.name}</div>
+                                <Link className='workspace-sidebar-header-name' to="/workspaces">{apiResponse.data?.payload.workspace.name}</Link>
                                 <IoCreateOutline className='workspace-sidebar-header-icon' />
                             </div>
                             <div className='workspace-sidebar-actions' >

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Workspace.css'
 import { Link, useParams } from 'react-router-dom'
 import ENVIROMENT from './../../config/enviroment.config';
@@ -8,6 +8,8 @@ import { PiChatCircleTextLight } from "react-icons/pi";
 import { MdOutlineHeadset } from "react-icons/md";
 import { IoMdArrowDropdown } from "react-icons/io";
 import MemberListItem from '../../components/MemberListItem/MemberListItem';
+import { AuthContext } from '../../Context/AuthContext';
+
 
 
 const Workspace = () => {

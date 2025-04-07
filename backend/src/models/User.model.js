@@ -49,6 +49,7 @@ const userSchema = new mongoose.Schema({
     },
     [USER_PROPS.PROFILE_IMAGE]: {
         type: String,
+        default: null
     }
 })
 

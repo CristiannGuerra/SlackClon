@@ -23,13 +23,8 @@ export const AuthContextProvider = ({ children }) => {
     setIsAuthenticatedState(true)
   }
 
-  const identified = (id) => {
-    sessionStorage.setItem("id", id)
-  }
-
-
   return (
-    <AuthContext.Provider value={{ isAuthenticatedState, logout, login, identified }} >
+    <AuthContext.Provider value={{ isAuthenticatedState, logout, login }} >
       {children}
     </AuthContext.Provider>
   )

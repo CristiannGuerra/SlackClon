@@ -57,7 +57,7 @@ const createNewUserController = async (req, res) => {
                 <p>
                     This verification token is valid for 24 hours.
                 </p>
-                <a href="${ENVIRONMENT.URL_BACKEND}/api/auth/verify-email?verification_token=${verification_token}">Click Aqui</a>`
+                <a href="${ENVIRONMENT.URL_BACKEND}/api/auth/verify-email?verification_token=${verification_token}">Click here</a>`
         })
 
         // Send response

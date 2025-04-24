@@ -1,18 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Workspace.css'
 import { Link, useParams } from 'react-router-dom'
 import ENVIROMENT from './../../config/enviroment.config';
-import { Toolbar, Navbar, Channel, ChannelList, UserInfo } from '../../components';
-import { IoCreateOutline } from "react-icons/io5";
+import { Toolbar, Navbar, Channel, ChannelList, UserInfo, MobileChannelList, MobileChannel } from '../../components';
+import { IoBookmarkOutline, IoCreateOutline, IoFilterOutline, IoMicOutline, IoSearchSharp } from "react-icons/io5";
 import { PiChatCircleTextLight } from "react-icons/pi";
 import { MdOutlineHeadset } from "react-icons/md";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { VscSend } from "react-icons/vsc";
 import MemberListItem from '../../components/MemberListItem/MemberListItem';
-import { AuthContext } from '../../Context/AuthContext';
-
+import { useMediaQuery } from 'react-responsive'
+import { RiHome2Fill } from 'react-icons/ri';
+import { TbBrandWechat } from 'react-icons/tb';
+import { HiOutlineBell } from 'react-icons/hi2';
+import { BsThreeDots } from 'react-icons/bs';
 
 
 const Workspace = () => {
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' })
+
     // UserInfo Container State
     const [isVisible, setIsVisible] = useState(false);
 
@@ -107,8 +113,100 @@ const Workspace = () => {
             {/* Loader de Carga */}
             {apiResponse.loading && <div className='workspace-loader'>Loading...</div>}
 
-            {/* API Response */}
-            {apiResponse.data && (
+            {/* Error */}
+            {apiResponse.error && <div className='workspace-error'>{apiResponse.error}</div>}
+
+
+            {(apiResponse.data && isTabletOrMobile && !channel_id) && (
+                <div className='mobile-workspace'>
+                    <div className='mobile-workspace-header'>
+                        <div className='mobile-workspace-header-info'>
+                            <div className='mobile-workspace-header-info-name'>
+                                <div className='mobile-workspace-header-info-name-logo'></div>
+                                <div className='mobile-workspace-header-info-name-text'>{apiResponse.data?.payload.workspace.name}</div>
+                            </div>
+                            <div className='mobile-workspace-header-info-avatar'></div>
+                        </div>
+                        <div className='mobile-workspace-header-tools'>
+                            <div className='mobile-workspace-header-tools-search'>
+                                <IoSearchSharp className='mobile-workspace-header-tools-search-icon' />
+                                <input className='mobile-workspace-header-tools-search-input' type="text" placeholder='Buscar en' />
+                                <IoMicOutline className='mobile-workspace-header-tools-mic-icon' />
+                            </div>
+
+                            <div className='mobile-workspace-header-tools-filter'>
+                                <IoFilterOutline className='mobile-workspace-header-tools-filter-icon' />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Body */}
+                    <div className='mobile-workspace-body'>
+                        <div className='mobile-workspace-body-sidebar'>
+                            <div className='mobile-workspace-body-sidebar-icons-container'>
+                                <IoBookmarkOutline className='mobile-workspace-body-sidebar-icons-container-icon' />
+                                <span className='mobile-workspace-body-sidebar-icons-container-text'>Later</span>
+                                <span className='mobile-workspace-body-sidebar-icons-container-text'>0 items</span>
+                            </div>
+                            <div className='mobile-workspace-body-sidebar-icons-container' >
+                                <VscSend className='mobile-workspace-body-sidebar-icons-container-icon fill' />
+                                <span className='mobile-workspace-body-sidebar-icons-container-text'>Draft & Sent</span>
+                                <span className='mobile-workspace-body-sidebar-icons-container-text'>0 items</span>
+                            </div>
+                            <div className='mobile-workspace-body-sidebar-icons-container'>
+                                <MdOutlineHeadset className='mobile-workspace-body-sidebar-icons-container-icon fill' />
+                                <span className='mobile-workspace-body-sidebar-icons-container-text'>Huddles</span>
+                                <span className='mobile-workspace-body-sidebar-icons-container-text'>0 items</span>
+                            </div>
+                        </div>
+                        {/* Channels */}
+                        <MobileChannelList />
+                        {/* Members */}
+                        <div className='mobile-workspace-body-channels-list'>
+                            <button type="button" className='mobile-workspace-body-channels-list-button'>
+                                <div className='mobile-workspace-body-channels-list-text'>Members</div>
+                                <IoMdArrowDropdown className='mobile-workspace-body-channels-list-icon' />
+                            </button>
+                            <ul className='mobile-workspace-body-channels-list-container'>
+                                {apiResponse.data?.payload.workspace.members.map((member, index) => {
+                                    return (
+                                        <li className='mobile-workspace-body-channels-list-item' key={index}>{member.username}</li>
+                                    )
+                                })}
+                            </ul>
+                        </div>
+                    </div>
+
+                    {/* Footer */}
+                    <div className='mobile-workspace-footer'>
+                        <div className='mobile-workspace-footer-icons-container'>
+                            <RiHome2Fill className='mobile-workspace-footer-icon fill' />
+                            <div className='mobile-workspace-footer-icon-text'>Home</div>
+                        </div>
+                        <div className='mobile-workspace-footer-icons-container'>
+                            <TbBrandWechat className='mobile-workspace-footer-icon' />
+                            <div className='mobile-workspace-footer-icon-text'>DMs</div>
+                        </div>
+                        <div className='mobile-workspace-footer-icons-container'>
+                            <HiOutlineBell className='mobile-workspace-footer-icon' />
+                            <div className='mobile-workspace-footer-icon-text'>Activity</div>
+                        </div>
+                        <div className='mobile-workspace-footer-icons-container'>
+                            <BsThreeDots className='mobile-workspace-footer-icon fill' />
+                            <div className='mobile-workspace-footer-icon-text'>More</div>
+                        </div>
+                    </div>
+                </div>
+            )
+            }
+
+            {(apiResponse.data && isTabletOrMobile && channel_id) && (
+                <MobileChannel/>
+            )}
+
+
+            {/* Desktop Version */}
+            {(apiResponse.data && !isTabletOrMobile) && (
                 <>
                     <Toolbar workspaceName={apiResponse.data?.payload.workspace.name} />
                     <div className='workspace-container'>

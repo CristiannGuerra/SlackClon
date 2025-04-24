@@ -39,7 +39,6 @@ const ChannelList = () => {
 
             if (response.ok) {
                 const newChannel = await response.json();
-                console.log(newChannel);
                 setApiResponse((prevState) => ({
                     ...prevState,
                     data: {

@@ -64,8 +64,6 @@ const Channel = () => {
         return () => abortController.abort();
     }, [fetchChannelData])
 
-    console.log(channelInfo)
-
 
     return (
         <div className='workspace-message-area'>

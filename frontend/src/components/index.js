@@ -18,6 +18,8 @@ import CreateChannelModal from "./CreateChannelModal/CreateChannelModal";
 import ChannelList from "./ChannelList/ChannelList";
 import MembersList from './MembersList/MembersList';
 import UserInfo from './UserInfo/UserInfo';
+import MobileChannelList from './MobileChannelList/MobileChannelList';
+import MobileChannel from './MobileChannel/MobileChannel';
 
 
 export {
@@ -40,5 +42,7 @@ export {
     CreateChannelModal,
     ChannelList,
     MembersList,
-    UserInfo
+    UserInfo,
+    MobileChannelList,
+    MobileChannel
 }

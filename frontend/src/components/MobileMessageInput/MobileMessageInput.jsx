@@ -1,10 +1,12 @@
 import React from 'react'
-import './MessageInput.css'
-import ENVIROMENT from '../../config/enviroment.config'
-import { useParams } from 'react-router-dom'
-import { useForm } from '../../hooks'
+import './MobileMessageInput.css'
+import { FaCirclePlus } from 'react-icons/fa6';
+import { useParams } from 'react-router-dom';
+import { useForm } from '../../hooks';
+import ENVIROMENT from '../../config/enviroment.config';
+import { IoMdSend } from "react-icons/io";
 
-const MessageInput = ({ onMessageSent, channel_name }) => {
+const MobileMessageInput = ({ onMessageSent, channel_name }) => {
     const textareaRef = React.useRef(null)
 
     const { channel_id } = useParams()
@@ -80,23 +82,28 @@ const MessageInput = ({ onMessageSent, channel_name }) => {
     }
 
 
-
     return (
-        <form method="post" onSubmit={handleSubmit} className='workspace-message-area-message-input-form'>
-            <label hidden htmlFor="message"></label>
-            <div className='workspace-message-area-message-input-tools' >tool 1</div>
-            <textarea
-                ref={textareaRef}
-                value={formState.message}
-                onKeyDown={handleKeyDown}
-                onChange={handleInput}
-                placeholder={`Message #${channel_name}`}
-                name="message"
-                id="message"
-                className='workspace-message-area-message-input'></textarea>
-            <button className='workspace-message-area-message-input-button' type="submit">Send</button>
-        </form>
+        <div className='mobile-channel-footer' >
+            <FaCirclePlus className='mobile-channel-footer-icon' />
+            <form method="post" onSubmit={handleSubmit} className='mobile-channel-footer-form'>
+                <label hidden htmlFor="message"></label>
+                <input
+                    type="text"
+                    ref={textareaRef}
+                    value={formState.message}
+                    onKeyDown={handleKeyDown}
+                    onChange={handleInput}
+                    placeholder={`Message #${channel_name}`}
+                    name="message"
+                    id="message"
+                    className='mobile-channel-footer-input'
+                />
+                <button className='mobile-channel-footer-button' type="submit">
+                    <IoMdSend className='mobile-channel-footer-button-icon' />
+                </button>
+            </form>
+        </div>
     )
 }
 
-export default MessageInput
+export default MobileMessageInput

@@ -68,7 +68,9 @@ class UserRepository {
             throw new ServerError("User not found", 404)
         }
         return user_found
-    }        
+    }
 }
 
-export default new UserRepository()
+const userRepository = new UserRepository()
+
+export default userRepository

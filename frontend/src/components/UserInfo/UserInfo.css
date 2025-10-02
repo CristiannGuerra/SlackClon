@@ -32,6 +32,23 @@
     gap: 20px;
 }
 
+.profile-section {
+    align-items: center;
+}
+
+.profile-section .profile-img-container {
+    width: 50%;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+.profile-section .profile-img-container .profile-img {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 1;
+}
+
 .profile-header {
     width: 100%;
     display: flex;
@@ -64,13 +81,6 @@
 .edit-about-link {
     color: var(--brand-core-blue);
     font-weight: 600;
-}
-
-/* IMG */
-.profile-img-container {
-    background-color: rebeccapurple;
-    width: 70%;
-    height: 150px;
 }
 
 .profile-name-section,
@@ -132,6 +142,7 @@
     border: none;
     color: var(--brand-core-lighter-pink);
     font-weight: 600;
+    cursor: pointer;
 }
 
 .status-btn,

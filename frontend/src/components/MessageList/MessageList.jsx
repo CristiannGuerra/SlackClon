@@ -21,7 +21,7 @@ const MessageList = ({ messages }) => {
                 username={message.sender.username}
                 messageContent={message.content}
                 messageTime={message.created_at}
-                userAvatar={message.sender.avatar}
+                userAvatar={message.sender.profile_image}
             />
         )
     })

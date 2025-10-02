@@ -69,6 +69,10 @@ const UserInfo = ({ isVisible, onClose }) => {
             </div>
             <div className='profile-section'>
                 <div className='profile-img-container'>
+                    <img className='profile-img'
+                        src={apiResponseUserInfo.data?.payload?.user?.profile_image}
+                        alt="Profile Picture"
+                    />
                 </div>
 
                 <div className='profile-name-section'>

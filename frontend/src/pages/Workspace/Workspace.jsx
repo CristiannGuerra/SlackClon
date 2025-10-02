@@ -1,19 +1,12 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react'
-import './Workspace.css'
-import { Link, useParams } from 'react-router-dom'
 import ENVIROMENT from './../../config/enviroment.config';
-import { Toolbar, Navbar, Channel, ChannelList, UserInfo, MobileChannelList, MobileChannel } from '../../components';
-import { IoBookmarkOutline, IoCreateOutline, IoFilterOutline, IoMicOutline, IoSearchSharp } from "react-icons/io5";
-import { PiChatCircleTextLight } from "react-icons/pi";
-import { MdOutlineHeadset } from "react-icons/md";
-import { IoMdArrowDropdown } from "react-icons/io";
-import { VscSend } from "react-icons/vsc";
-import MemberListItem from '../../components/MemberListItem/MemberListItem';
+import './Workspace.css'
+import { IoBookmarkOutline, IoCreateOutline, IoFilterOutline, IoMicOutline, IoSearchSharp, PiChatCircleTextLight, MdOutlineHeadset, IoMdArrowDropdown, VscSend, RiHome2Fill, TbBrandWechat, HiOutlineBell, BsThreeDots } from "../../assets/icons/index.js"
+import { Toolbar, Navbar, Channel, ChannelList, UserInfo, MobileChannelList, MobileChannel, MemberListItem } from '../../components';
+import { Link, useParams } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
-import { RiHome2Fill } from 'react-icons/ri';
-import { TbBrandWechat } from 'react-icons/tb';
-import { HiOutlineBell } from 'react-icons/hi2';
-import { BsThreeDots } from 'react-icons/bs';
+
 
 
 const Workspace = () => {
@@ -201,7 +194,7 @@ const Workspace = () => {
             }
 
             {(apiResponse.data && isTabletOrMobile && channel_id) && (
-                <MobileChannel/>
+                <MobileChannel />
             )}
 
 

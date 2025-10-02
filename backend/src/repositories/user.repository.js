@@ -63,7 +63,7 @@ class UserRepository {
     }
 
     async findUserById(_id) {
-        const user_found = await User.findById(_id).select('username email -_id')
+        const user_found = await User.findById(_id).select('username email profile_image -_id')
         if (!user_found) {
             throw new ServerError("User not found", 404)
         }

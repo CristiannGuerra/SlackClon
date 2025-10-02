@@ -20,6 +20,7 @@ import MembersList from './MembersList/MembersList';
 import UserInfo from './UserInfo/UserInfo';
 import MobileChannelList from './MobileChannelList/MobileChannelList';
 import MobileChannel from './MobileChannel/MobileChannel';
+import MemberListItem from './MemberListItem/MemberListItem';
 
 
 export {
@@ -44,5 +45,6 @@ export {
     MembersList,
     UserInfo,
     MobileChannelList,
-    MobileChannel
+    MobileChannel,
+    MemberListItem
 }

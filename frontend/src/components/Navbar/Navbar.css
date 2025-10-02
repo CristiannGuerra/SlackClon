@@ -49,6 +49,13 @@
     font-size: 20px;
 }
 
+.navbar .navbar-icons .navbar-icon-button .navbar-icon-container .navbar-icon,
+.navbar-icons .navbar-icon-container .navbar-icon {
+    width: 100%;
+    scale: 0.8;
+    border-radius: 8px;
+    object-fit: cover;
+}
 
 
 .navbar-icon-text {
